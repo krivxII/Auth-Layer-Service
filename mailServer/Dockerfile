@@ -1,0 +1,22 @@
+FROM node:14.17.3-alpine
+
+WORKDIR /usr/src/mailServer
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3002
+
+ENV PORT=3002
+
+ARG CORREO_ELECTRONICO
+ENV CORREO_ELECTRONICO $CORREO_ELECTRONICO
+ARG CONTRASENA
+ENV CONTRASENA $CONTRASENA
+
+WORKDIR /usr/src/mailServer/src
+
+CMD [ "node", "mailSender.js" ]
