@@ -5,7 +5,7 @@ services:
   web:
     container_name: web
     build:
-      context: ./services/web
+      context: ./mailServer
       # `args` is used to make environment variables visible during the build. See https://docs.docker.com/compose/compose-file/compose-file-v3/#environment.
       args:
         - CORREO_ELECTRONICO=herman.anez@alumnos.uneatlantico.es
