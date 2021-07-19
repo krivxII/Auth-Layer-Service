@@ -1,6 +1,6 @@
 FROM node:14.17.3-alpine
 
-WORKDIR /usr/src/mailServer
+WORKDIR /usr/src/redisServer
 
 COPY package*.json ./
 
@@ -15,6 +15,5 @@ ENV CONTRASENA $CONTRASENA
 ARG PORT
 ENV PORT $PORT
 
-WORKDIR /usr/src/mailServer/
 
 CMD [ "node", "index.js" ]
