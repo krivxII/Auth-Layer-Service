@@ -4,7 +4,7 @@ let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.CORREO_ELECTRONICO || "herman.anez@alumnos.uneatlantico.es",
-    pass: process.env.CONTRASENA || 'T3tmVUOk'
+    pass: process.env.CONTRASENA || 'T3tmVUOll'
   }
 });
 
