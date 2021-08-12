@@ -1,6 +1,18 @@
 version: "3"
 
 services:
+  apigateway:
+    container_name: apigateway
+    build:
+      context: ./apigateway
+      # `args` is used to make environment variables visible during the build. See https://docs.docker.com/compose/compose-file/compose-file-v3/#environment.
+      args:
+        - MAIL_SERVER_URL=http://mailServer:80
+        - REDIS_SERVER_URL=http://redis-server:80
+        - PORT=80
+    ports:
+    - "80:80"
+
   mailserver:
     container_name: mailServer
     build:
@@ -9,7 +21,7 @@ services:
       args:
         - CORREO_ELECTRONICO=herman.anez@alumnos.uneatlantico.es
         - CONTRASENA=T3tmVUOk
-        - PORT=8080
+        - PORT=80
         
   redis:
     container_name: redis
@@ -23,9 +35,7 @@ services:
       # `args` is used to make environment variables visible during the build. See https://docs.docker.com/compose/compose-file/compose-file-v3/#environment.
       args:
         - REDIS_SERVER=redis
-        - PORT=8083
-    ports:
-    - "8083:8083"
+        - PORT=80
     
   redis-commander:
     container_name: redis-commander
