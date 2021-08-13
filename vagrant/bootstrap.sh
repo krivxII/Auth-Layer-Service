@@ -1,5 +1,6 @@
 # Update Packages
 sudo apt-get update
+sudo apt update
 # Upgrade Packages
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
@@ -19,7 +20,9 @@ sudo apt install npm -y
 sudo npm cache clean -f
 sudo npm install -g n
 sudo n 14.17.1
+sudo apt update
 sudo apt upgrade -y
+
 
 # sudo apt install curl
 
