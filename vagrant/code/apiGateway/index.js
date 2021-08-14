@@ -38,4 +38,9 @@ app.post("/registrar", async (req,res)=>{
     }
 })
 
+app.delete("/validar/:numero",async (req,resp)=>{
+    
+
+})
+
 app.listen(puerto,()=> console.log(puerto))
