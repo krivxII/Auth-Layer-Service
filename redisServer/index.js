@@ -89,7 +89,7 @@ server.post("/buscar", async(req, res) => {
     const numero = generator.numberGenerator(7)
     if (!(req.body.correo===undefined) && !(req.body.token===undefined)){
         //Se verifica si el correo tiene otra entrada 
-        if(encontrarElemento(req.body.correo)===1){
+        if(await encontrarElemento(req.body.correo)===1){
            await borradoCascada(req.body.correo)
         }
         creandoCascada(req.body.correo,numero,req.body.token)
