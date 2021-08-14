@@ -10,7 +10,7 @@ async function buscarElemento(elemento){
     let valor;
     await redisClient.get(elemento, (err,data)=>{
         if(err) throw err;
-        else if(data) {valor=data}
+        else if(data) {console.log(data)}
         else  {valor=0}
         }
     )
