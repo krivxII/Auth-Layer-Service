@@ -112,8 +112,8 @@ server.post("/validar", async(req, res) => {
 
     if (!(req.body.numero===undefined)){
         //Se verifica si el correo tiene otra entrada 
-        const token = await encontrarElemento(req.body.numero)
-        if(token===0){
+        const token = await buscarElemento(req.body.numero)
+        if(token==="0"){
             console.log(12)
             res.sendStatus(400)
         }else{
