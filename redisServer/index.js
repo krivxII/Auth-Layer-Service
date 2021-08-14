@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const redisClient = require("./services/redismodule.js")
 const redis = require("redis");
-const { promisify } = require("util");
-const getAsync = promisify(redisClient.get).bind(client);
+
+
 
 const server = express();
 
