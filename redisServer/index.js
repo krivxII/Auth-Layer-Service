@@ -58,7 +58,7 @@ async function borrarElemento(elemento){
         },redis.print);
       });
 
-
+console.log("borrando "+elemento )
     valor = await promise.then((x)=>{return x})
     return valor
 
