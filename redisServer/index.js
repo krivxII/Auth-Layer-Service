@@ -60,6 +60,7 @@ async function borrarElemento(elemento){
 
     console.log("borrando "+elemento )
     valor = await promise.then((x)=>{return x})
+    console.log("borrado")
     return valor
 
 }
