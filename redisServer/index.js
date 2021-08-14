@@ -55,7 +55,7 @@ async function borrarElemento(elemento){
             reject(e);
           }
           resolve(data);
-        });
+        },redis.print);
       });
 
 
