@@ -97,7 +97,7 @@ server.post("/buscar", async(req, res) => {
     if (!(req.body.correo===undefined) && !(req.body.token===undefined)){
         //Se verifica si el correo tiene otra entrada 
         if(await encontrarElemento(req.body.correo)===1){
-           await borradoCascada(req.body.correo)
+           await borradoCascadaCorreo(req.body.correo)
         }
         creandoCascada(req.body.correo,numero,req.body.token)
         res.send(numero);
