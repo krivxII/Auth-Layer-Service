@@ -69,9 +69,9 @@ async function borradoCascadaCorreo(correo){
     let token =  await buscarElemento(numero);
     let x ;
     console.log(correo+" "+numero+" "+token)
-   x =await borrarElemento(correo);
-   x =await borrarElemento(numero);
-   x= await borrarElemento(token);
+    x =await borrarElemento(numero);
+    x =await borrarElemento(correo);
+    x= await borrarElemento(token);
 }
 async function borradoCascadaToken(token){
     let correo = await buscarElemento(token);
