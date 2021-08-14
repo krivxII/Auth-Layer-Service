@@ -9,6 +9,7 @@ server.use(cors());
 const port = process.env.PORT || 8080
 
 server.post("/sendMail", async(req, res) => {
+    console.log(req.body)
     await sendMail(req.body.number,req.body.mail);
     res.send("gogogo");
 });
