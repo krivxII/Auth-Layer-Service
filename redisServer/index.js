@@ -118,7 +118,7 @@ server.post("/validar", async(req, res) => {
             res.sendStatus(400)
         }else{
             borradoCascadaToken(token)
-            res.send(token);
+            res.json( {token});
         }
     }
     else {
