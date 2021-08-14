@@ -58,7 +58,7 @@ async function borrarElemento(elemento){
         },redis.print);
       });
 
-console.log("borrando "+elemento )
+    console.log("borrando "+elemento )
     valor = await promise.then((x)=>{return x})
     return valor
 
@@ -67,13 +67,15 @@ console.log("borrando "+elemento )
 async function borradoCascadaCorreo(correo){
     let numero = await buscarElemento(correo);
     let token =  await buscarElemento(numero);
+    console.log(correo+" "+numero+" "+token)
     await borrarElemento(correo);
     await borrarElemento(numero);
     await borrarElemento(token);
 }
-async function borradoCascadaToken(Token){
-    let correo = await buscarElemento(Token);
+async function borradoCascadaToken(token){
+    let correo = await buscarElemento(token);
     let numero = await buscarElemento(correo);
+    console.log(correo+" "+numero+" "+token)
     await borrarElemento(correo);
     await borrarElemento(numero);
     await borrarElemento(token);
