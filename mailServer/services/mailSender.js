@@ -11,6 +11,7 @@ let transporter = nodemailer.createTransport({
 
 module.exports = async function (numero = 1,correo="herman.a.a.v@gmail.com") {
   
+  console.log("mandando")
   let mailOptions = {
     from: 'herman.anez@alumnos.uneatlantico.es',
     to: correo,
