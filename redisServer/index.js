@@ -7,11 +7,11 @@ const redis = require("redis");
 const server = express();
 
 function buscarElemento(elemento){
-
+    let valor;
     redisClient.get(elemento, (err,data)=>{
         if(err) throw err;
-        if(data) return data;
-        else return  0
+        else if(data) {valor=data}
+        else  {valor=0}
         }
     )
 
