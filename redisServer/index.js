@@ -29,7 +29,7 @@ async function buscarElemento(elemento){
     )*/
 
     valor = await promise.then((x)=>{return x})
-    if (valor === "null") return 0;
+    if (valor === null) return 0;
     return valor
 
 }
