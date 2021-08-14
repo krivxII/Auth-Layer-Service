@@ -26,7 +26,6 @@ server.post("/buscar", async(req, res) => {
 
  server.post("/colocar", async(req, res) => {
     redisClient.set(req.body.a, req.body.b)
-    redisClient.set(req.body.a, req.body.b)
     res.send("ok");
 });
 
