@@ -29,7 +29,7 @@ async function buscarElemento(elemento){
     )*/
 
     valor = await promise.then((x)=>{return x})
-    console.log(valor);
+    console.log(valor+"yeaaaaaaaaaaaaaaaaaaaaa");
     return valor
 
 }
