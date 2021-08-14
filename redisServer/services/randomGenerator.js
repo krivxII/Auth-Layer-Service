@@ -8,6 +8,7 @@ const generator = {
         for (let i=0; i<digitos; i++){
             numero = numero+getRandomInt(9).toString();
         }
+        return numero
       },
 }
 
