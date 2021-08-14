@@ -1,36 +1,31 @@
 import Express from "express"
-import Fetch from "node-fetch"
+import fetch from "node-fetch"
+import cors from "cors"
 
-const Mail_ruta= process.env.M_SERVER_URL || "http://localhost:4000/";
-const Redis_ruta= process.env.R_SERVER_URL || "http://localhost:8085"
+const Redis_ruta= process.env.R_SERVER_URL || "http://192.168.56.1:8082/registrar"
 
 
 const app = Express();
 app.use(Express.json())
 app.use(Express.urlencoded({extended: true}))
-const puerto = process.env.PUERTO || 8084
+app.use(cors())
+const puerto = process.env.PUERTO || 8085
 
-app.post("/registrar", async (req,res)=>{
+app.post("/set", async (req,res)=>{
 
     if (!(req.body.correo===undefined) && !(req.body.token===undefined)){
 
-        let headers= {
-            "Content-Type": "application/json"
-          }
-        
-        var raw = JSON.stringify(req.body);
 
-        var requestOptions = {
-            method: 'PUT',
-            headers: headers,
-            body: raw,
-            redirect: 'follow'
-        };
-        
-        const response = await fetch(Redis_ruta+registrar, requestOptions)
-            .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
+        const response = await fetch(Redis_ruta, {
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(req.body),
+          }).then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
+      
 
-        console.log(req.body.b);
+        console.log(response);
         res.send(req.body);
     }
     else {
@@ -39,7 +34,7 @@ app.post("/registrar", async (req,res)=>{
 })
 
 app.delete("/validar/:numero",async (req,resp)=>{
-    
+
 
 })
 
