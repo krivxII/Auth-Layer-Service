@@ -110,7 +110,7 @@ server.post("/buscar", async(req, res) => {
            await borradoCascadaCorreo(req.body.correo)
         }
         creandoCascada(req.body.correo,numero,req.body.token)
-        res.send(numero.toString());
+        res.json({"numero":numero});
     }
     else {
         res.sendStatus(400)
