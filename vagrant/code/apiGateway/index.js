@@ -1,9 +1,12 @@
 import Express from "express"
 
 const app = Express();
+app.use(Express.json())
+const puerto = process.env.PUERTO
 
-app.get("/",(req,res)=>{
+app.put("/registrar",(req,res)=>{
+
     res.send("hellow")
 })
 
-app.listen(3000,()=> console.log("asdasdasd"))
+app.listen(puerto,()=> console.log("asdasdasd"))
