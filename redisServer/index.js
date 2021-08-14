@@ -114,6 +114,7 @@ server.post("/validar", async(req, res) => {
         //Se verifica si el correo tiene otra entrada 
         const token = await encontrarElemento(req.body.numero)
         if(token===0){
+            console.log(12)
             res.sendStatus(400)
         }else{
             borradoCascadaToken(token)
@@ -121,6 +122,7 @@ server.post("/validar", async(req, res) => {
         }
     }
     else {
+        console.log(123)
         res.sendStatus(400)
     }
 });
