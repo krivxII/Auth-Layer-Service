@@ -98,8 +98,13 @@ server.post("/buscar", async(req, res) => {
 
  server.post("/registrar", async(req, res) => {
     //Se verifica que el Json tenga los elementos necesarios
-    const numero = generator.numberGenerator(7)
     if (!(req.body.correo===undefined) && !(req.body.token===undefined)){
+        let numero = generator.numberGenerator(7)
+        let flag = await encontrarElemento(numero)
+        while(flag===1){
+            numero = generator.numberGenerator(7)
+            flag = await encontrarElemento(numero)
+        }
         //Se verifica si el correo tiene otra entrada 
         if(await encontrarElemento(req.body.correo)===1){
            await borradoCascadaCorreo(req.body.correo)
