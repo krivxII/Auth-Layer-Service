@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const redisClient = require("./services/redismodule.js")
 const redis = require("redis");
+const { promisify } = require("util");
+const getAsync = promisify(client.get).bind(client);
 
 const server = express();
 
@@ -10,12 +12,12 @@ async function buscarElemento(elemento){
     let valor;
     await redisClient.get(elemento, async (err,data)=>{
         if(err) throw err;
-        else if(data) {console.log(data); valor=data;}
+        else if(data) {console.log(await data); valor=data;}
         else  {valor=0}
         }
     )
     console.log(valor);
-    return "valor"
+    return valor
 
 }
 server.use(bodyParser.json());
