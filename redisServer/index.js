@@ -10,25 +10,13 @@ const server = express();
 
 async function buscarElemento(elemento){
     let valor;
-
-    let promise = new Promise((resolve, reject) => {
-        redisClient.get(elemento, (e, data) => {
-          if(e){
-            reject(e);
-          }
-          resolve(data);
-        });
-      });
-
-
-    /*await redisClient.get(elemento, async (err,data)=>{
+    
+    await redisClient.get(elemento, async (err,data)=>{
         if(err) throw err;
         else if(data) {console.log(await data); valor=data;}
         else  {valor=0}
         }
-    )*/
-
-    valor = await promise.then((x)=>{return x})
+    )
     console.log(valor);
     return valor
 
