@@ -14,7 +14,8 @@ function buscarElemento(elemento){
         else  {valor=0}
         }
     )
-    return valor
+    console.log(valor);
+    return "valor"
 
 }
 server.use(bodyParser.json());
