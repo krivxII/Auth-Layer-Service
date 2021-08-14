@@ -72,6 +72,9 @@ async function borradoCascada(correo){
     await borrarElemento(token);
 }
 async function creandoCascada(correo,numero,token){
+    console.log(correo)
+    console.log(numero)
+    console.log(token)
     redisClient.set(correo, numero,"EX",300, redis.print)
     redisClient.set(numero, token,"EX",300, redis.print)
     redisClient.set(token, correo,"EX",300, redis.print)
