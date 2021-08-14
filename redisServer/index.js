@@ -69,7 +69,7 @@ async function borradoCascadaCorreo(correo){
     let token =  await buscarElemento(numero);
     let x ;
     console.log(correo+" "+numero+" "+token)
-   x =  await borrarElemento(correo);
+   x =await borrarElemento(correo);
    x =await borrarElemento(numero);
    x= await borrarElemento(token);
 }
@@ -77,8 +77,8 @@ async function borradoCascadaToken(token){
     let correo = await buscarElemento(token);
     let numero = await buscarElemento(correo);
     console.log(correo+" "+numero+" "+token)
-    await borrarElemento(correo);
     await borrarElemento(numero);
+    await borrarElemento(correo);
     await borrarElemento(token);
 }
 async function creandoCascada(correo,numero,token){
