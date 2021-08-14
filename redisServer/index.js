@@ -51,15 +51,13 @@ async function borrarElemento(elemento){
     let valor;
 
     let promise = new Promise((resolve, reject) => {
-        
-        
         redisClient.del(elemento, function(err, response) {
             if (response == 1) {
                 resolve(response)
             } else{
                 resolve(response);
             }
-        });
+        })})
 
     console.log("borrando "+elemento )
     valor = await promise.then((x)=>{return x})
