@@ -64,9 +64,16 @@ async function borrarElemento(elemento){
 
 }
 
-async function borradoCascada(correo){
+async function borradoCascadaCorreo(correo){
     let numero = await buscarElemento(correo);
     let token =  await buscarElemento(numero);
+    await borrarElemento(correo);
+    await borrarElemento(numero);
+    await borrarElemento(token);
+}
+async function borradoCascadaToken(Token){
+    let correo = await buscarElemento(Token);
+    let numero = await buscarElemento(correo);
     await borrarElemento(correo);
     await borrarElemento(numero);
     await borrarElemento(token);
@@ -84,7 +91,7 @@ server.post("/buscar", async(req, res) => {
      res.send(await buscarElemento("as"));
  });
 
- server.post("/colocar", async(req, res) => {
+ server.post("/registrar", async(req, res) => {
     //Se verifica que el Json tenga los elementos necesarios
     const numero = generator.numberGenerator(7)
     if (!(req.body.correo===undefined) && !(req.body.token===undefined)){
@@ -93,7 +100,25 @@ server.post("/buscar", async(req, res) => {
            await borradoCascada(req.body.correo)
         }
         creandoCascada(req.body.correo,numero,req.body.token)
-        res.send("ok");
+        res.send(numero);
+    }
+    else {
+        res.sendStatus(400)
+    }
+});
+
+server.post("/validar", async(req, res) => {
+    //Se verifica que el Json tenga los elementos necesarios
+
+    if (!(req.body.numero===undefined)){
+        //Se verifica si el correo tiene otra entrada 
+        const token = await encontrarElemento(req.body.numero)
+        if(token===0){
+            res.sendStatus(400)
+        }else{
+            borradoCascadaToken(token)
+            res.send(token);
+        }
     }
     else {
         res.sendStatus(400)
