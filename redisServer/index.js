@@ -67,10 +67,11 @@ async function borrarElemento(elemento){
 async function borradoCascadaCorreo(correo){
     let numero = await buscarElemento(correo);
     let token =  await buscarElemento(numero);
+    let x ;
     console.log(correo+" "+numero+" "+token)
-    await borrarElemento(correo);
-    await borrarElemento(numero);
-    await borrarElemento(token);
+   x =  await borrarElemento(correo);
+   x =await borrarElemento(numero);
+   x= await borrarElemento(token);
 }
 async function borradoCascadaToken(token){
     let correo = await buscarElemento(token);
