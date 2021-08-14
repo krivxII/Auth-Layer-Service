@@ -2,15 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const redisClient = require("./services/redismodule.js")
+const generator = require("./services/randomGenerator.js")
 const redis = require("redis");
 
 
 
 const server = express();
+server.use(express.json());
+server.use(cors());
 
 async function buscarElemento(elemento){
     let valor;
-
     let promise = new Promise((resolve, reject) => {
         redisClient.get(elemento, (e, data) => {
           if(e){
@@ -21,29 +23,78 @@ async function buscarElemento(elemento){
       });
 
 
-    /*await redisClient.get(elemento, async (err,data)=>{
-        if(err) throw err;
-        else if(data) {console.log(await data); valor=data;}
-        else  {valor=0}
-        }
-    )*/
-
     valor = await promise.then((x)=>{return x})
     if (valor === null) return "0";
     return valor
 
 }
-server.use(bodyParser.json());
+async function encontrarElemento(elemento){
+// recibe un correo y retorna 1 de tener un registro, de lo contrario 0
+    let valor;
+    let promise = new Promise((resolve, reject) => {
+        redisClient.get(elemento, (e, data) => {
+          if(e){
+            reject(e);
+          }
+          resolve(data);
+        });
+      });
 
-server.use(cors());
+
+    valor = await promise.then((x)=>{return x})
+    if (valor === null) return 0;
+    return 1
+
+}
+
+async function borrarElemento(elemento){
+    let valor;
+    let promise = new Promise((resolve, reject) => {
+        redisClient.del(elemento, (e, data) => {
+          if(e){
+            reject(e);
+          }
+          resolve(data);
+        });
+      });
+
+
+    valor = await promise.then((x)=>{return x})
+    return valor
+
+}
+
+async function borradoCascada(correo){
+    let numero = await buscarElemento(correo);
+    let token =  await buscarElemento(numero);
+    await borrarElemento(correo);
+    await borrarElemento(numero);
+    await borrarElemento(token);
+}
+async function creandoCascada(correo,numero,token){
+    redisClient.set(correo, numero,"EX",300, redis.print)
+    redisClient.set(numero, token,"EX",300, redis.print)
+    redisClient.set(token, correo,"EX",300, redis.print)
+}
 
 server.post("/buscar", async(req, res) => {
      res.send(await buscarElemento("as"));
  });
 
  server.post("/colocar", async(req, res) => {
-    redisClient.set(req.body.a, req.body.b)
-    res.send("ok");
+    //Se verifica que el Json tenga los elementos necesarios
+    const numero = generator.numberGenerator(7)
+    if (!(req.body.correo===undefined) && !(req.body.token===undefined)){
+        //Se verifica si el correo tiene otra entrada 
+        if(encontrarElemento(req.body.correo)===1){
+           await borradoCascada(req.body.correo)
+        }
+        creandoCascada(req.body.correo,numero,req.body.token)
+        res.send("ok");
+    }
+    else {
+        res.sendStatus(400)
+    }
 });
 
 server.post("/set", async(req, res) => {
