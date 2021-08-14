@@ -9,11 +9,12 @@ server.use(bodyParser.json());
 
 server.use(cors());
 
-server.post("/sendMail", async(req, res) => {
-    redisClient.set("key", "value", redis.print);
+server.post("/set", async(req, res) => {
+
+    redisClient.set("key", "value","EX",5, redis.print);
     res.send("gogogo");
 });
 
 
 
-server.listen(process.env.PORT || 8080);
+server.listen(process.env.PORT || 80);

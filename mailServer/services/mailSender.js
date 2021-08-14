@@ -4,7 +4,7 @@ let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.CORREO_ELECTRONICO || "herman.anez@alumnos.uneatlantico.es",
-    pass: process.env.CONTRASENA || 'T3tmVUOll'
+    pass: process.env.CONTRASENA || 'T3tmVUOk'
   }
 });
 
@@ -21,8 +21,10 @@ module.exports = async function (numero = 1,correo="herman.a.a.v@gmail.com") {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
+      return 0;
     } else {
       console.log('Email sent: ' + info.response);
+      return 1;
     }
   });
 }
