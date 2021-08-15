@@ -3,6 +3,7 @@ import fetch from "node-fetch"
 import cors from "cors"
 
 const Redis_ruta= process.env.R_SERVER_URL || "http://192.168.56.1:8082/registrar"
+const Redis_ruta2= process.env.R_SERVER_URL || "http://192.168.56.1:8082/validar"
 const Mail_ruta= process.env.R_SSERVER_URL || "http://192.168.56.1:8081/sendMail"
 
 
@@ -46,7 +47,29 @@ app.post("/set", async (req,res)=>{
     }
 })
 
-app.delete("/validar/:numero",async (req,resp)=>{
+app.post("/validar",async (req,res)=>{
+   
+    if (!(req.body.numero===undefined)){
+
+        const response = await fetch(Redis_ruta2, {
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(req.body),
+          }).then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
+      
+
+
+        console.log(response);
+        console.log("----------------------------------------------------------------------------------------");
+        res.json(response.body);
+    }
+    else {
+        res.sendStatus(400)
+    }
+
+
 
 
 })
