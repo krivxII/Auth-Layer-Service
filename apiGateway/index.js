@@ -2,23 +2,22 @@ import Express from "express"
 import fetch from "node-fetch"
 import cors from "cors"
 
-const Redis_ruta= process.env.R_SERVER_URL || "http://192.168.56.1:8082/registrar"
-const Redis_ruta2= process.env.R_SERVER_URL || "http://192.168.56.1:8082/validar"
-const Mail_ruta= process.env.R_SSERVER_URL || "http://192.168.56.1:8081/sendMail"
+const Redis_ruta= process.env.URL_REDIS || "http://192.168.56.1:8082/registrar"
+const Mail_ruta= process.env.URL_CORREO  || "http://192.168.56.1:8081/sendMail"
+const puerto = process.env.PORT || 8085
 
 
 const app = Express();
 app.use(Express.json())
 app.use(Express.urlencoded({extended: true}))
 app.use(cors())
-const puerto = process.env.PUERTO || 8085
 
 app.post("/set", async (req,res)=>{
 
     if (!(req.body.correo===undefined) && !(req.body.token===undefined)){
 
-        console.clear()
-        const response = await fetch(Redis_ruta, {
+        
+        const response = await fetch(Redis_ruta+"registrar", {
             method: 'POST',
             headers: {
               "Content-Type": "application/json"
@@ -28,7 +27,7 @@ app.post("/set", async (req,res)=>{
       
 
           console.log("response1-------------------------------------------");console.log(response);
-        const response2 = await fetch(Mail_ruta, {
+        const response2 = await fetch(Mail_ruta+"sendMail", {
             timeout:2000,
             method: 'POST',
             headers: {
@@ -51,7 +50,7 @@ app.post("/validar",async (req,res)=>{
    
     if (!(req.body.numero===undefined)){
 
-        const response = await fetch(Redis_ruta2, {
+        const response = await fetch(Redis_ruta+"validar", {
             method: 'POST',
             headers: {
               "Content-Type": "application/json"
