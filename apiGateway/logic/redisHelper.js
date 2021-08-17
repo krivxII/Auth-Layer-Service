@@ -23,6 +23,7 @@ const redisHelper = {
 
     async validarNumero(numero){
        
+        console.log(numero)
         const response = await fetch(Redis_ruta+"validar", {
             method: 'POST',
             headers: {
