@@ -18,7 +18,7 @@ app.post("/set", async (req,res)=>{
     if (validator.validarCorreoToken(req.body)){
 
         const numero = await redisHelper.registrarCredenciales(req.body)
-        const resultado = await mailHelper.sendMail(numero,req.body.token);
+        const resultado = await mailHelper.sendMail(numero,req.body.correo);
         res.sendStatus(200);
     }
     else {
