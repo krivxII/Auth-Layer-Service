@@ -10,7 +10,7 @@ const port = process.env.PORT || 8080
 
 server.post("/sendMail", async(req, res) => {
     console.log(req.body)
-    await sendMail(req.body.number,req.body.mail);
+    await sendMail(req.body.numero,req.body.correo);
     res.send("gogogo");
 });
 
