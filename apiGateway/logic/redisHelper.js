@@ -38,6 +38,7 @@ const redisHelper = {
         console.log("-------------------------------------------------------------");
         console.log(response.status);
         if (response.status===200){
+            res.json().then(data => ({ body: data }))
             return (response.body)
         }
         else return response.status
