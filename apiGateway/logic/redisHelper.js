@@ -33,7 +33,7 @@ const redisHelper = {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ numero }),
-        }).then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
+        }).then(res => res.json());
 
 
         console.log("-------------------------------------------------------------");
