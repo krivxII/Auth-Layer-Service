@@ -1,5 +1,4 @@
 const redisHelper =require("../logic/redisHelper.js")
-const mailHelper =require("../logic/mailHelper.js")
 const generator = require("../logic/randomGenerator.js")
 
 module.exports = controllers = {
@@ -7,25 +6,29 @@ module.exports = controllers = {
     async registarControler(req, res){
         
         let numero = generator.numberGenerator(7)
-        let flag = await encontrarElemento(numero)
+        let flag = await redisHelper.encontrarElemento(numero)
         while(flag===1){
             numero = generator.numberGenerator(7)
-            flag = await encontrarElemento(numero)
+            flag = await redisHelper.encontrarElemento(numero)
         }
-        if(await encontrarElemento(req.body.correo)===1){
-            await borradoCascadaCorreo(req.body.correo)
+        if(await redisHelper.encontrarElemento(req.body.correo)===1){
+            await redisHelper.borradoCascadaCorreo(req.body.correo)
          }
-         creandoCascada(req.body.correo,numero,req.body.token)
+         redisHelper.creandoCascada(req.body.correo,numero,req.body.token)
          res.json({"numero":numero});
         
 
     },
 
     async validarControler(req, res){
-        console.log("1")
-        const numero = await redisHelper.registrarCredenciales(req.body)
-        const resultado = await mailHelper.sendMail(numero, req.body.correo);
-        res.sendStatus(200);
+        const token = await redisHelper.buscarElemento(req.body.numero)
+        if(token==="0"){
+            console.log(12)
+            res.sendStatus(400)
+        }else{
+           await redisHelper.borradoCascadaToken(token);
+            res.json( {token:token});
+        }
 
     }
 
