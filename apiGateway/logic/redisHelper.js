@@ -26,17 +26,17 @@ const redisHelper = {
 
         console.log("validarNumero")
         console.log(numero)
-        console.log(typeof numero)
+        console.log(typnumero)
         const response = await fetch(Redis_ruta + "validar", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ numero }),
-        }).then(res => console.log(res));
+        }).then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
 
 
-
+        console.log("-------------------------------------------------------------");
         console.log(response);
 
         return (response.body)
