@@ -22,4 +22,4 @@ const schemas = {
 
 }
 
-export default schemas
+module.exports = schemas
