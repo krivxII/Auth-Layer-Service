@@ -1,9 +1,7 @@
 import Express from "express"
 import cors from "cors"
-import validator from "./logic/validator.js"
-import redisHelper from "./logic/redisHelper.js"
-import mailHelper from "./logic/mailHelper.js"
-
+import controllers from "./controllers/controllers.js"
+import middlewares from "./middleware/middlewares.js"
 
 
 const puerto = process.env.PORT || 8085
@@ -12,32 +10,9 @@ app.use(Express.json())
 app.use(Express.urlencoded({ extended: true }))
 app.use(cors())
 
-app.post("/registrar", async (req, res) => {
+app.post("/registrar", middlewares.registrarSchema,controllers.registarControler)
 
-    if (validator.validarCorreoToken(req.body)) {
+app.post("/validar", middlewares.validarSchema,controllers.validarControler)
 
-        const numero = await redisHelper.registrarCredenciales(req.body)
-        const resultado = await mailHelper.sendMail(numero, req.body.correo);
-        res.sendStatus(200);
-    }
-    else {
-        res.sendStatus(400)
-    }
-})
-
-app.post("/validar", async (req, res) => {
-
-    if (validator.validarNumero(req.body)) {
-
-        res.json(await redisHelper.validarNumero(req.body.numero));
-    }
-    else {
-        res.sendStatus(400)
-    }
-
-
-
-
-})
 
 app.listen(puerto, () => console.log(puerto))
