@@ -14,7 +14,7 @@ const controllers = {
     async validarControler(req, res){
         console.log("validarControler")
         console.log(req.body)
-        res.json( await redisHelper.validarNumero(req.body));
+        res.json( await redisHelper.validarNumero(req.body.numero));
 
     }
 
