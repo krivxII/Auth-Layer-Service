@@ -64,21 +64,21 @@ redisClient.on("error", function(error) {
   },
   
   async  borradoCascadaCorreo(correo){
-    let numero = await buscarElemento(correo);
-    let token =  await buscarElemento(numero);
+    let numero = await this.buscarElemento(correo);
+    let token =  await this.buscarElemento(numero);
     let x ;
     console.log(correo+" "+numero+" "+token)
-    x =await borrarElemento(numero);
-    x =await borrarElemento(correo);
-    x= await borrarElemento(token);
+    x =await this.borrarElemento(numero);
+    x =await this.borrarElemento(correo);
+    x= await this.borrarElemento(token);
 },
 async  borradoCascadaToken(token){
-    let correo = await buscarElemento(token);
-    let numero = await buscarElemento(correo);
+    let correo = await this.buscarElemento(token);
+    let numero = await this.buscarElemento(correo);
     console.log(correo+" "+numero+" "+token)
-    await borrarElemento(numero);
-    await borrarElemento(correo);
-    await borrarElemento(token);
+    await this.borrarElemento(numero);
+    await this.borrarElemento(correo);
+    await this.borrarElemento(token);
 },
 async  creandoCascada(correo,numero,token){
     console.log(correo)
