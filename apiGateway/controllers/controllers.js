@@ -14,7 +14,7 @@ const controllers = {
     async validarControler(req, res){
         console.log("validarControler")
         console.log(req.body)
-        response =await redisHelper.validarNumero(req.body.numero)
+        const response =await redisHelper.validarNumero(req.body.numero)
 
         if (response===400) {res.sendStatus(400)} else {res.json( response)}
         
