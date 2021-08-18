@@ -26,7 +26,7 @@ const redisHelper = {
 
         console.log("validarNumero")
         console.log(numero)
-        console.log(typnumero)
+        console.log(typeof pnumero)
         const response = await fetch(Redis_ruta + "validar", {
             method: 'POST',
             headers: {
