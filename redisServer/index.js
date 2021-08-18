@@ -4,7 +4,7 @@ const controllers = require("./controllers/controllers.js");
 const middlewares =require("./middleware/middlewares.js");
 
 
-const server = express();
+const app = express();
 app.use(Express.json())
 app.use(Express.urlencoded({ extended: true }))
 server.use(cors());
@@ -14,4 +14,4 @@ app.post("/registrar", middlewares.registrarSchema,controllers.registarControler
 app.post("/validar", middlewares.validarSchema,controllers.validarControler)
 
 
-server.listen(process.env.PORT || 80);
+app.listen(process.env.PORT || 80);
