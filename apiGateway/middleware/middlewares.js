@@ -14,7 +14,7 @@ const middlewares={
     },
 
     async  validarSchema(req, res,next){
-        console.log("0")
+        console.log("0000")
         if (validator.validarNumero(req.body)) {
            next();
         }

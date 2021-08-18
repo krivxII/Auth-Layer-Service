@@ -9,7 +9,7 @@ module.exports =  {
         console.log("TF")
         let x = await sendMail(req.body.numero,req.body.correo)
         console.log(x);
-        res.sendStatus( x);
+        res.sendStatus(x);
 
 
     }
