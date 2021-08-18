@@ -5,7 +5,7 @@ const mailHelper = {
 
   async sendMail(numero, correo) {
 
-    const mailResponse = await fetch(Mail_ruta + "sendMail", {
+    const mailResponse = await fetch(Mail_ruta + "mandarCorreo", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -13,7 +13,7 @@ const mailHelper = {
       body: JSON.stringify({ numero, correo }),
 
     });
-    console.log("asdasd")
+    console.log(mailResponse)
     return 1;
   }
 

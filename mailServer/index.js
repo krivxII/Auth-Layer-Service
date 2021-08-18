@@ -1,19 +1,15 @@
 const express = require("express");
 const cors = require("cors");
-const sendMail = require("./services/mailSender.js")
 
 const server = express();
+const middlewares = require("./middleware/middlewares.js")
+const controllers = require("./controllers/controllers.js")
 server.use(express.json());
 server.use(cors());
 
 const port = process.env.PORT || 8080
 
-server.post("/sendMail", async(req, res) => {
-    console.log(req.body)
-    sendMail(req.body.numero,req.body.correo);
-    console.log("TF")
-    res.sendStatus(200);
-});
+server.post("/mandarCorreo", middlewares.mandarCorreoMiddleware,controllers.mandarCorreoController);
 
 
 
