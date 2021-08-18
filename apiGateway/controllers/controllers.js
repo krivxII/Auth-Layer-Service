@@ -13,6 +13,7 @@ const controllers = {
 
     async validarControler(req, res){
         console.log("validarControler")
+        console.log(req)
         const numero = await redisHelper.registrarCredenciales(req.body);
         const resultado = await mailHelper.sendMail(numero, req.body.correo);
         res.sendStatus(200);
