@@ -5,8 +5,8 @@ const middlewares =require("./middleware/middlewares.js");
 
 
 const app = express();
-app.use(Express.json())
-app.use(Express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 server.use(cors());
 
 app.post("/registrar", middlewares.registrarSchema,controllers.registarControler)
