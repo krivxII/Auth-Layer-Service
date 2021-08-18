@@ -40,7 +40,7 @@ const redisHelper = {
    
 
         console.log("-------------------------------------------------------------");
-        console.log(response);
+        console.log(response.status);
 
         return (response.body)
     }
