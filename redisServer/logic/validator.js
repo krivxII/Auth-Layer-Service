@@ -17,7 +17,7 @@ const validator = {
 
     validarNumero(body) {
 
-        const validate = ajv.compile(schemas.registrarSchema)
+        const validate = ajv.compile(schemas.validarSchema)
         const valid = validate(body)
         if (!valid) console.log(validate.errors)
         console.log("validando")
