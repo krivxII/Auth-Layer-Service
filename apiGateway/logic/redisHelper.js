@@ -33,8 +33,11 @@ const redisHelper = {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ numero }),
-        })
+        }).then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data }))).catch(res => console.log(res));
 
+
+
+   
 
         console.log("-------------------------------------------------------------");
         console.log(response);
