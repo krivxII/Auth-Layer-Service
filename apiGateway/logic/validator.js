@@ -1,22 +1,33 @@
+import Ajv from "ajv"
+import schemas from "../schemas/schemas.js"
 
-const validator={
 
-    validarCorreoToken(body){
-        
-        console.log("valido")
-        return (!(body.correo===undefined) && !(body.token===undefined)) ? true:false 
-        
+const ajv = new Ajv()
+const validator = {
+
+    validarCorreoToken(body) {
+
+        const validate = ajv.compile(schemas.registrarSchema)
+        const valid = validate(body)
+        if (!valid) console.log(validate.errors)
+        console.log("validando")
+        return valid ? true : false
+
     },
 
-    validarNumero(body){
-        
-        console.log("valido")
-        return (!(body.numero===undefined)) ? true:false 
-        
+    validarNumero(body) {
+
+        const validate = ajv.compile(schemas.registrarSchema)
+        const valid = validate(body)
+        if (!valid) console.log(validate.errors)
+        console.log("validando")
+        return valid ? true : false
+
+
     }
-   
-    
-    
+
+
+
 }
 
 export default validator

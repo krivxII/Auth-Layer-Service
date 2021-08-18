@@ -9,8 +9,8 @@ let transporter = nodemailer.createTransport({
 });
 
 
-module.exports = async function (numero = 1,correo="herman.a.a.v@gmail.com") {
-  
+module.exports = async function (numero = 1, correo = "herman.a.a.v@gmail.com") {
+
   console.log("mandando")
   let mailOptions = {
     from: 'herman.anez@alumnos.uneatlantico.es',
@@ -25,6 +25,7 @@ module.exports = async function (numero = 1,correo="herman.a.a.v@gmail.com") {
       return 0;
     } else {
       console.log('Email sent: ' + info.response);
+      console.log("mandando2")
       return 1;
     }
   });

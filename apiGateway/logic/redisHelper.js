@@ -21,21 +21,21 @@ const redisHelper = {
 
     },
 
-    async validarNumero(numero){
-       
+    async validarNumero(numero) {
+
         console.log(numero)
-        const response = await fetch(Redis_ruta+"validar", {
+        const response = await fetch(Redis_ruta + "validar", {
             method: 'POST',
             headers: {
-              "Content-Type": "application/json"
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify({numero}),
-          }).then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
-      
+            body: JSON.stringify({ numero }),
+        }).then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
+
 
 
         console.log(response);
-       
+
         return (response.body)
     }
 
