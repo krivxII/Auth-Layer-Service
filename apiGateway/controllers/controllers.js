@@ -16,7 +16,7 @@ const controllers = {
         console.log(req.body)
         const response =await redisHelper.validarNumero(req.body.numero)
 
-        if (response===400) {res.sendStatus(400)} else {res.json( response)}
+        if (response===400) {res.sendStatus(400)} else {res.json(response)}
         
     }
 
