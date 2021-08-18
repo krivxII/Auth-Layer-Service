@@ -34,15 +34,17 @@ const redisHelper = {
             },
             body: JSON.stringify({ numero }),
         })
-
-
-
-   
-
+        
         console.log("-------------------------------------------------------------");
         console.log(response.status);
+        if (response.status===200){
+            return (response.body)
+        }
+        else return response.status
+   
 
-        return (response.body)
+
+        
     }
 
 }
