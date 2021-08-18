@@ -33,7 +33,7 @@ const redisHelper = {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ numero }),
-        }).then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
+        }).then(res => {if (res.status===200) {res.json().then(data => ({ ok: res.ok, status: res.status, body: data })) } else 400    });
 
 
 
