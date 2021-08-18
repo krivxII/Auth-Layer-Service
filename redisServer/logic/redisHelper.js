@@ -91,4 +91,4 @@ async  creandoCascada(correo,numero,token){
 
   }
 
-module.exports = redisClient
+module.exports = redisHelper
