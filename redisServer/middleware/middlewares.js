@@ -27,4 +27,4 @@ const middlewares={
 
 }
 
-export default middlewares
+module.exports =  middlewares

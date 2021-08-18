@@ -30,4 +30,4 @@ const validator = {
 
 }
 
-export default validator
+module.exports = validator

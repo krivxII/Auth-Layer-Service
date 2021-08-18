@@ -2,7 +2,7 @@ const redisHelper =require("../logic/redisHelper.js")
 const mailHelper =require("../logic/mailHelper.js")
 const generator = require("../logic/randomGenerator.js")
 
-const controllers = {
+module.exports = controllers = {
 
     async registarControler(req, res){
         
@@ -32,5 +32,3 @@ const controllers = {
 
 
 }
-
-export default controllers
