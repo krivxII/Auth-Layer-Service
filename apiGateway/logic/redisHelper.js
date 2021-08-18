@@ -6,6 +6,7 @@ const redisHelper = {
 
     async registrarCredenciales({ correo, token }) {
 
+        console.log("registrarCredenciales")
         console.log(correo + "  " + token)
         const redisResponse = await fetch(Redis_ruta + "registrar", {
             method: 'POST',
@@ -23,6 +24,7 @@ const redisHelper = {
 
     async validarNumero(numero) {
 
+        console.log("validarNumero")
         console.log(numero)
         const response = await fetch(Redis_ruta + "validar", {
             method: 'POST',
