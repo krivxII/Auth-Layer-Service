@@ -4,7 +4,7 @@ import mailHelper from "../logic/mailHelper.js"
 const controllers = {
 
     async registarControler(req, res){
-        console.log("1")
+        console.log("registrar controller")
         const numero = await redisHelper.registrarCredenciales(req.body)
         const resultado = await mailHelper.sendMail(numero, req.body.correo);
         res.sendStatus(200);
@@ -12,8 +12,8 @@ const controllers = {
     },
 
     async validarControler(req, res){
-        console.log("1")
-        const numero = await redisHelper.registrarCredenciales(req.body)
+        console.log("validarControler")
+        const numero = await redisHelper.registrarCredenciales(req.body);
         const resultado = await mailHelper.sendMail(numero, req.body.correo);
         res.sendStatus(200);
 

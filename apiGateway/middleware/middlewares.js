@@ -3,7 +3,7 @@ import validator from "../logic/validator.js"
 const middlewares={
 
   async  registrarSchema(req, res,next){
-        console.log("0")
+        console.log("registrarSchema")
         if (validator.validarCorreoToken(req.body)) {
            next();
         }
@@ -14,7 +14,7 @@ const middlewares={
     },
 
     async  validarSchema(req, res,next){
-        console.log("0000")
+        console.log("validarSchema")
         if (validator.validarNumero(req.body)) {
            next();
         }

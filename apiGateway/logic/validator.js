@@ -10,7 +10,7 @@ const validator = {
         const validate = ajv.compile(schemas.registrarSchema)
         const valid = validate(body)
         if (!valid) console.log(validate.errors)
-        console.log("validando")
+        console.log("validarCorreoToken")
         return valid ? true : false
 
     },
@@ -20,7 +20,7 @@ const validator = {
         const validate = ajv.compile(schemas.validarSchema)
         const valid = validate(body)
         if (!valid) console.log(validate.errors)
-        console.log("validando")
+        console.log("validarNumero")
         return valid ? true : false
 
 
