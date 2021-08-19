@@ -1,4 +1,4 @@
-const servidor = require("./servidor/servidor.js")
+const servidor = require("./src/servidor/servidor.js")
 
 
 const main = {
