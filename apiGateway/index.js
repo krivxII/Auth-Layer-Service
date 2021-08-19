@@ -1,18 +1,14 @@
-import Express from "express"
-import cors from "cors"
-import controllers from "./controllers/controllers.js"
-import middlewares from "./middleware/middlewares.js"
+import servidor from "./servidor/servidor.js"
 
 
-const puerto = process.env.PORT || 8085
-const app = Express();
-app.use(Express.json())
-app.use(Express.urlencoded({ extended: true }))
-app.use(cors())
+const main = {
 
-app.post("/registrar", middlewares.registrarSchema,controllers.registarControler)
-
-app.post("/validar", middlewares.validarSchema,controllers.validarControler)
+ startApp(){
+      servidor.startServer();
+ }
 
 
-app.listen(puerto, () => console.log(puerto))
+}
+
+main.startApp();
+
