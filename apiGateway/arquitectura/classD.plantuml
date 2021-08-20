@@ -1,6 +1,6 @@
 @startuml
 package "Express.js" #DDDDDD {
-  class router
+    class router
 }
 package "cors" #DDDDDD {
 
@@ -12,57 +12,54 @@ package "ajv" #DDDDDD {
 
 }
 
-class "servidor" {
-port : Integer
-
-void startServer()
-
-
-}
 
 class "index" {
-void startApp()
+    void startApp()
+}
+class "servidor" {
+    port : Integer
+    void startServer()
 }
 
 class "rutasService" {
-void crearRouter()
+    void crearRouter()
 }
 
 class "controllers" {
-void registarControler(S)
-void validarControler()
+    void registarControler()
+    void validarControler()
 }
 
 class "redisHelper" {
-void registarControler(correo : String, numero: String)
-void validarNumero(numero: String)
+    void registarControler(correo : String, numero: String)
+    void validarNumero(numero: String)
 }
 
 
 class "mailHelper" {
-void sendMail(numero : String, correo : String)
+    void sendMail(numero : String, correo : String)
 }
 
 class "middlewares" {
-void registrarSchema(request,response,next)
-void validarSchema(request,response,next)
+    void registrarSchema(request,response,next)
+    void validarSchema(request,response,next)
 }
 
 class "validator" {
-bool validarCorreoToken(body : Json)
-bool validarNumero(body : Json)
+    bool validarCorreoToken(body : Json)
+    bool validarNumero(body : Json)
 }
 
 class "schemas" {
-registrarSchema 
-validarSchema 
+    registrarSchema
+    validarSchema
 }
 
 
-
-
-index::startApp  ..>   servidor::startServer : "<<use>>"
 Express.js <.. servidor  : "<<use>>"
+
+
+index::startApp   ..>  servidor::startServer : "<<use>>"
 servidor ..> cors : "<<use>>"
 servidor::startServer ..> rutasService::crearRouter : "<<use>>"
 rutasService::crearRouter ..> controllers : "<<use>>"

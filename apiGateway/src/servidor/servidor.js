@@ -2,16 +2,16 @@ import express from "express"
 import cors from "cors"
 import rutasService from "../router/rutasService.js"
 
+const app = express();
 
 const servidor = {
      puerto : process.env.PORT || 8085,
-     app : express(),
       startServer(){
-         this.app.use(express.json())
-         this.app.use(express.urlencoded({ extended: true }))
-         this.app.use(cors())
-         this.app.use("/",rutasService)
-         this.app.listen(this.puerto, () => console.log(this.puerto))
+         app.use(express.json())
+         app.use(express.urlencoded({ extended: true }))
+         app.use(cors())
+         app.use("/",rutasService.crearRouter())
+         app.listen(this.puerto, () => console.log(this.puerto))
      }
 }
 
