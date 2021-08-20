@@ -60,16 +60,23 @@ Express.js <.. servidor  : "<<use>>"
 
 
 index::startApp   ..>  servidor::startServer : "<<use>>"
+
 servidor ..> cors : "<<use>>"
 servidor::startServer ..> rutasService::crearRouter : "<<use>>"
+
 rutasService::crearRouter ..> controllers : "<<use>>"
 rutasService::crearRouter ..> middlewares : "<<use>>"
 rutasService ..> router : "<<use>>"
+
 controllers ..> redisHelper : "<<use>>"
 controllers ..> mailHelper : "<<use>>"
+
 redisHelper ..> "Node-fetch": "<<use>>"
+
 mailHelper ..> "Node-fetch": "<<use>>"
+
 middlewares ..> validator : "<<use>>"
+
 validator ..> schemas : "<<use>>"
 validator ..> ajv : "<<use>>"
 @enduml
