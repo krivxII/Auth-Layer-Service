@@ -15,6 +15,6 @@ ENV URL_REDIS $URL_REDIS
 ARG PORT
 ENV PORT $PORT
 
-WORKDIR /usr/src/apiGateway/
+WORKDIR /usr/src/apiGateway/src/
 
 CMD [ "node", "index.js" ]
