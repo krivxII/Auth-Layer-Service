@@ -1,4 +1,4 @@
-import servidor from "./src/servidor/servidor.js"
+import servidor from "./servidor/servidor.js"
 
 
 const main = {
