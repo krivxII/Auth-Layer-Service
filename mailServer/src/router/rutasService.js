@@ -1,8 +1,8 @@
 const controllers = require("../controllers/controllers.js")
 const middlewares = require("../middleware/middlewares.js")
-const Express = require("express")
+const express = require("express")
 
-const erouter =  Express.Router();
+const erouter =  express.Router();
 
 const router ={
 

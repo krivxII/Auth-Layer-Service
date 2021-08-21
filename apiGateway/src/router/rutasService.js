@@ -1,8 +1,8 @@
 import controllers from "../controllers/controllers.js"
 import middlewares from "../middleware/middlewares.js"
-import Express from "express"
+import express from "express"
 
-const erouter= Express.Router()
+const erouter= express.Router()
 
 const router = {
     crearRouter() {

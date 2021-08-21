@@ -1,4 +1,4 @@
-const sendMail = require("../logic/mailSender.js")
+const sendMail = require("../logic/mailHelper.js")
 
 const controllers = {
     
