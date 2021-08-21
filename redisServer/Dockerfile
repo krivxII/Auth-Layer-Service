@@ -15,5 +15,6 @@ ENV CONTRASENA $CONTRASENA
 ARG PORT
 ENV PORT $PORT
 
+WORKDIR /usr/src/redisServer/src/
 
 CMD [ "node", "index.js" ]
