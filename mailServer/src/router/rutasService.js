@@ -8,7 +8,7 @@ const router ={
 
     crearRouter() {
         erouter.post("/mandarCorreo", 
-        middlewares.mandarCorreoMiddleware,
+        middlewares.mandarCorreoSchema,
         controllers.mandarCorreoController);
         return erouter
     }

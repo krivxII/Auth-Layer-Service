@@ -1,6 +1,6 @@
 module.exports = {
 
-    mandarCorreo:{
+    mandarCorreoSchema:{
         type: "object",
         properties: {
             numero: {type: "string"},
