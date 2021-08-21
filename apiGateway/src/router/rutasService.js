@@ -2,19 +2,19 @@ import controllers from "../controllers/controllers.js"
 import middlewares from "../middleware/middlewares.js"
 import Express from "express"
 
+const erouter= Express.Router()
 
 const router = {
-    router:Express.Router(),
     crearRouter() {
-        this.router.post("/registrar",
+        erouter.post("/registrar",
             middlewares.registrarSchema,
             controllers.registarControler)
 
-        this.router.post("/validar",
+        erouter.post("/validar",
             middlewares.validarSchema,
             controllers.validarControler)
             
-        return this.router
+        return erouter
     }
 };
 

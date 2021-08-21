@@ -5,6 +5,8 @@ const mailHelper = {
 
   async sendMail(numero, correo) {
 
+    console.log("mandando correo")
+
     const mailResponse = await fetch(Mail_ruta + "mandarCorreo", {
       method: 'POST',
       headers: {

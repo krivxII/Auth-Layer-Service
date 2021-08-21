@@ -10,7 +10,7 @@ const servidor = {
          this.app.use(Express.json())
          this.app.use(Express.urlencoded({ extended: true }))
          this.app.use(cors())
-         this.app.use("/",rutasService)
+         this.app.use("/",rutasService.crearRouter())
          this.app.listen(this.puerto, () => console.log(this.puerto))
      }
 }

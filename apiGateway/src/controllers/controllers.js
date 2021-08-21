@@ -7,7 +7,7 @@ const controllers = {
         console.log("registrar controller")
         const numero = await redisHelper.registrarCredenciales(req.body)
         const resultado = await mailHelper.sendMail(numero, req.body.correo);
-        res.sendStatus(200);
+        res.status(200).send("correo y token registrados");
 
     },
 
@@ -24,4 +24,4 @@ const controllers = {
 
 }
 
-export default controllers
+export default controllers;
