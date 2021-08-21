@@ -2,7 +2,7 @@ FROM node:14.17.3-alpine
 
 WORKDIR /usr/src/redisServer
 
-COPY package*.json ./
+COPY ./src/package*.json ./
 
 RUN npm install
 

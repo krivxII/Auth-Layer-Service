@@ -2,7 +2,7 @@ FROM node:14.17.3-alpine
 
 WORKDIR /usr/src/mailServer
 
-COPY package*.json ./
+COPY ./src/package*.json ./
 
 RUN npm install
 
@@ -15,6 +15,6 @@ ENV CONTRASENA $CONTRASENA
 ARG PORT
 ENV PORT $PORT
 
-WORKDIR /usr/src/mailServer/
+WORKDIR /usr/src/mailServer/src/
 
 CMD [ "node", "index.js" ]
