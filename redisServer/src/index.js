@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const controllers = require("./src/controllers/controllers.js");
-const middlewares =require("./src/middleware/middlewares.js");
+const controllers = require("./controllers/controllers.js");
+const middlewares =require("./middleware/middlewares.js");
 
 const port = process.env.PORT || 80
 const app = express();
