@@ -1,0 +1,26 @@
+@startuml
+start
+:Recibe peticion;
+:valida la peticion Json{"correo":String,"token":String};
+if (peticion valida?) then (yes)
+  :envia datos al contenedor de percistencia;
+if (respuesta valida?) then (yes)
+  :envia datos al contenedor de mensajeria;
+if (respuesta valida?) then (yes)
+  :devuelve respuesta 200;
+else (no)
+  :envia la  respuesta del sistema de persistencia;
+  end
+endif
+else (no)
+  :envia la  respuesta del sistema de persistencia;
+  end
+endif
+else (no)
+  :envia respuesta de error;
+  end
+endif
+stop
+@enduml
+
+http://www.plantuml.com/plantuml/png/jO-nJWD134Jx_GehrKMYY2Zl2b9JmXUOtGaixDadstSIGlmx4O7aw10IXQMnDVEisNkmnJosz2bIVuTS7q0JekQgCgH-uLOBK-FpaMvTvMsJrGowwU_3gZnURK9V8D_h-v3gWRfpv4IvsL8yGQXxXMyJKGzPAbFXK2Tkb5K2Wg961JJ1SlM0vCeddC6d6Hxy9zu8SNw6_PfMiCne2-ZYlDxjXeJce4vqzR8nhLm5ZRnwOEIl8dufGWGfwJZryB-aDOLWflOpug5JsX_rFBOF
