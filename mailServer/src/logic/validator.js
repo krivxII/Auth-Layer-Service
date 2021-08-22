@@ -7,7 +7,7 @@ module.exports = validator = {
 
     validarCorreoToken(body) {
 
-        const validate = ajv.compile(schemas.mandarCorreo)
+        const validate = ajv.compile(schemas.mandarCorreoSchema)
         const valid = validate(body)
         if (!valid) console.log(validate.errors)
         console.log("validando")
