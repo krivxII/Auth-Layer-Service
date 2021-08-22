@@ -9,11 +9,11 @@ if (respuesta valida?) then (yes)
 if (respuesta valida?) then (yes)
   :devuelve respuesta 200;
 else (no)
-  :envia la  respuesta del sistema de persistencia;
+  :envia la  respuesta del sistema de mensajeria;
   end
 endif
 else (no)
-  :envia la  respuesta del sistema de persistencia;
+  :envia la  respuesta del sistema de percistencia;
   end
 endif
 else (no)
@@ -23,4 +23,4 @@ endif
 stop
 @enduml
 
-http://www.plantuml.com/plantuml/png/jO-nJWD134Jx_GehrKMYY2Zl2b9JmXUOtGaixDadstSIGlmx4O7aw10IXQMnDVEisNkmnJosz2bIVuTS7q0JekQgCgH-uLOBK-FpaMvTvMsJrGowwU_3gZnURK9V8D_h-v3gWRfpv4IvsL8yGQXxXMyJKGzPAbFXK2Tkb5K2Wg961JJ1SlM0vCeddC6d6Hxy9zu8SNw6_PfMiCne2-ZYlDxjXeJce4vqzR8nhLm5ZRnwOEIl8dufGWGfwJZryB-aDOLWflOpug5JsX_rFBOF
+http://www.plantuml.com/plantuml/png/dP2zJWD138JxVGehrKMYY2Zl2b9JmXEOtGaixDadstSIGhmx4H7XeE6di3IsPhwHlFTWYtbiwLsa_WQvte4cHCrLPKZzmgqMfiRd8rsxoiicgnbqqz-6LRc_s8G-GJxMro7L0tNdo8bojQLuW53t3DyceXwoLAR2eKxSAAi414MD2cY2vUe1oPLFE8DFCppuNxmHulm8-pMjO9dH5j2dytAt6nAQWphHLMLZMhaA6ddrmCZVYuaW9Hsd7lxCMJ_aHzAQGZ1J-nhnq2djZteUsni0
