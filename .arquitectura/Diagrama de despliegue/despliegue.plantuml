@@ -1,0 +1,26 @@
+@startuml
+node servidor <<cliente>>
+node "Navegador Web"<<cliente>>
+node "Doker host" <<host>>{
+    circle "    puerto 80"
+    circle "    puerto 6379"
+    node "aplicacion" <<contenedor>>{
+        node "servicio de correo" <<imagen>>
+        node "servicio de persistencia" <<imagen>>
+        node "api gateway" <<imagen>>
+        database "redis" <<imagen>>
+        node "redis-comander" <<imagen>>
+    }
+}
+
+servidor --> [    puerto 80]: http
+[Navegador Web]--> [    puerto 6379]: http
+[    puerto 80]--> [api gateway]
+[    puerto 6379]--> [redis-comander]
+[api gateway] --- [servicio de correo]: http
+[api gateway] --- [servicio de persistencia]: http
+[servicio de persistencia] --- redis: http
+redis--- [redis-comander]: http
+@enduml
+
+http://www.plantuml.com/plantuml/png/VP5FQuGm5CJl-HJ1Uw1Gw9-oX3tqt6iFYuUtoSCDrKHUdbjAsU_UkB6sgLKlAlERSPpi8mFnqBN21uio8fsT3IHtEzCwz8nQPwLwWJCsC6glUAoM-dDuGvAd4BbAxl6kzQUGwJAEJ9k8yRaVa3Z8XvjgJRgxlN_COiw5ldK6Z0k-6bi5p-ZH1lfE_o6lvHCequi9H1X6X-kWGQ_r1jmZHHSPlN6mOO7UoGOOt-7ZNye2mn5Y8WcjY-j9MLScTE0jqWAyY8iGyr4efUMXsAv-aYVcNXoACwbBC2yveqL0Hd_zJot-6ZDI5gr5uKdDb3miLv--kGsNgy-MDI3xhtKcD5TJQb5oqlVexT2rNm00
