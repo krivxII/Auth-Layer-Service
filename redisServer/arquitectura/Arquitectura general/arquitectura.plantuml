@@ -1,0 +1,39 @@
+@startuml
+skinparam rectangle<<desc>> {
+    shadowing false
+    backgroundColor Transparent
+    borderColor Transparent
+    titleFontColor Red
+    stereotypeFontColor Transparent
+}
+
+
+node "redis Server" <<image>>{
+rectangle Router
+rectangle Controllers
+rectangle middleware
+
+}
+
+
+rectangle Router
+rectangle Controllers
+
+database redis
+
+
+rectangle request <<desc>> [ 
+HTTP Request 
+]
+
+rectangle response <<desc>> [ 
+HTTP Response
+]
+
+Router <--- request 
+middleware<-- Router  
+Controllers<-- middleware
+redis <--> Controllers 
+Controllers --> response
+@enduml
+http://www.plantuml.com/plantuml/png/ZP31QZ9148Jl_HIDTzzWMGJXvpy6uotaq3gLpUBiZEdkZGJ9ksTqPJE2XyonlkgQwbwPY_euHB93duwYCh1YxvAwYAO9i7tRyfcuF7kNa4zzwlXDek6gxMH_w3IFAQnppCfRbMGb1iaddZL07pFlFU9VJZxX3SBqZKEH_UjOiNhqcuXI3k258lJ6pz1Fw8ARfX-aGzkUQTw0DtbqQ2MiIwRc6A5MgKCVGiH957J9_si01N7PYO6lLUu65HyZp7a-uWlJ_-tsYJStGA_tTZlcP7ZadyZ5FxNXPhbSpX_GR_cYyyt2L1KjUhtYTBSYjlKsTnDSuDo9LaXX7E8F
