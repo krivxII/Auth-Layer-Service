@@ -1,10 +1,10 @@
-![Diagrama actividad Registrar](http://www.plantuml.com/plantuml/png/dP2zJWD138JxVGehrKMYY2Zl2b9JmXEOtGaixDadstSIGhmx4H7XeE6di3IsPhwHlFTWYtbiwLsa_WQvte4cHCrLPKZzmgqMfiRd8rsxoiicgnbqqz-6LRc_s8G-GJxMro7L0tNdo8bojQLuW53t3DyceXwoLAR2eKxSAAi414MD2cY2vUe1oPLFE8DFCppuNxmHulm8-pMjO9dH5j2dytAt6nAQWphHLMLZMhaA6ddrmCZVYuaW9Hsd7lxCMJ_aHzAQGZ1J-nhnq2djZteUsni0)
+![Diagrama actividad Registrar](http://www.plantuml.com/plantuml/png/dP6nJWCn44HxVyMKbowYl1Ja6_Y3nPw8HJxxvDqxYR_78K8O6Y25fV5e_CRQFPjByst9uKE4-ObHducLhb5hEOLvbwn9a6KmzOBfyuPRuF40Vs71z4Ox161csLMGnAj1Cc8jpi9K6zALtw9QDwBA3TTewqPpkOkti9YyilsPbhXlp3lnbNmu7a-1sOYfrA4o2uPKOePTlxx8psA09OL-zF9lpZYGNqaZ1MojjkzFpEiQpbttnRu3)
 
 ```bash
 @startuml
 start
 :Recibe peticion;
-:valida la peticion Json{"correo":String,"token":String};
+:valida la peticion;
 if (peticion valida?) then (yes)
   :envia datos al contenedor de percistencia;
 if (respuesta valida?) then (yes)
