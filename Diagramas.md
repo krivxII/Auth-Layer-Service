@@ -11,6 +11,11 @@
 + [Ruta Registrar](<./.arquitectura/servicios/apiGateway/Diagramas de actividad/RutaRegistrar.md>)
 + [Ruta validar](<./.arquitectura/servicios/apiGateway/Diagramas de actividad/RutaValidar.md>)
 
+### Redis Server
+
++ [Ruta Registrar](<./.arquitectura/servicios/redisServer/Diagramas de actividad/RutaRegistrar.md>)
++ [Ruta validar](<./.arquitectura/servicios/redisServer/Diagramas de actividad/RutaValidar.md>)
+
 
 ## Diagramas de clase
 
