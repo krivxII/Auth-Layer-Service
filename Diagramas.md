@@ -4,7 +4,7 @@
 
 + [Contexto](<./.arquitectura/C4/context.md>)
 + [contenedor](<./.arquitectura/C4/container.md>)
-  + [Componente Api Gateway](<./.arquitectura/C4/component1.md>)
++ [Componente Api Gateway](<./.arquitectura/C4/component.md>)
 
 ## Diagrama de secuencia
 
