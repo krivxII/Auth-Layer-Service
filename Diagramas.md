@@ -1,5 +1,12 @@
 # Diagramas 
 
+## Diagrama de secuencia
+
+### Externos
+
++ [Envio de credenciales](<./.arquitectura/Diagramas de secuencia/Externos/Envio de credenciales.md>)
++ Verificacion de Identidad
+
 ## Diagrama de despliegue
 
 [Diagrama de despliegue](<./.arquitectura/Diagrama de despliegue/despliegue.md>)
