@@ -1,12 +1,11 @@
-![imagen](http://www.plantuml.com/plantuml/png/dPDFImCn4CNl-HHXpwu8Wd-aB3tejLSFPIdJP6YZsoHCqgf8lxkpPbqthYlgN5fulpVl4MRd8GB5_QuHrccK0UbWj2Cvcwd6e8rOLKaf5d303RJQFQwBiNxh7f7areLOiBlzhQfN8NcK8TKm8Ndy7YawUNLMJ4aNvvVNIKnxmJT6WJBEjdkLuqoBNAFTpbYQp_8ChZIkb2D2nmQpWmtQgfBBakV3qBEIVOdjfOnRyEBJXt0YxvuzOGZyl_uXrYC54xYXCl2xyA7ZtnN0czK68Zx1otGgGxA3_XBKoneYh26WB0Yr2SKWAM-Jz5Av7LYDD0AFuYX4VsbboKMpqwXlv3P6BvRPoTK9p0-bH_C5Z6Pl8hxwqhAyPos6blPflhke53YDZgwWCqpfoVtUf2DJgx8SzUlqELhD7-mR.png)
+![imagen](http://www.plantuml.com/plantuml/png/dPB1JeGm48RlVOg6i_W0PjFiGQzxzK08cMqdR1KwPDfTDMRVtG8L8IuRtLuW-R-F-KbdwmDmEBQDS6HGUkIJDSHoiz6DHHTGgJ79Td326lhi6VVP1U2HNf7bWNpeq_wfrASGCfuHWAwn6hGbD-WKPOU6UC8Iccf4i39OQM96Ye9jeKQdb2poU2RXcvNH6zafMd0xCdZ_uk_aqtl7w7ryBw-CxP2zzG6Tjl2tuNFZvWhGsQg6W6_miJurGZ91_naqnGO2xC6Zp1YDzTbiqg9DodDDBJY3_0iyYxCGFpkJgtd_1ta8eHF5Od7AI4MiM7wuJAmGCt_ufqkhaE1hwFBwah2MZ_RGA95ZkpnVwxb5PuvjymK0)
 
-```
+```js
 @startuml
 node servidor <<cliente>>
 node "Navegador Web" <<cliente>>
 node "Doker host" <<host>>{
-    circle "    puerto 80"
-    circle "    puerto 6379"
+
     node "aplicacion" <<contenedor>>{
 
         node servicio_de_correo <<imagen>> [----
@@ -30,10 +29,10 @@ node "Doker host" <<host>>{
     }
 }
 
-servidor --> [    puerto 80]: http
-[Navegador Web]--> [    puerto 6379]: http
-[    puerto 80]--> api_gateway 
-[    puerto 6379]--> [redis-comander]
+servidor <-> api_gateway: http
+[Navegador Web] <--> [redis-comander]: http
+
+
 api_gateway  --- servicio_de_correo : http
 api_gateway  --- servicio_de_persistencia : http
 servicio_de_persistencia  --- redis: http
