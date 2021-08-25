@@ -5,7 +5,12 @@
 ### Externos
 
 + [Envio de credenciales](<./.arquitectura/Diagramas de secuencia/Externos/Envio de credenciales.md>)
-+ Verificacion de Identidad
++ [Verificacion de Identidad](<./.arquitectura/Diagramas de secuencia/Externos/validacion de numero.md>)
+
+### internos
+
++ [Envio de credenciales](<./.arquitectura/Diagramas de secuencia/Internos/Envio de credenciales.md>)
++ [Verificacion de Identidad](<./.arquitectura/Diagramas de secuencia/Internos/validacion de numero.md>)
 
 ## Diagrama de despliegue
 
