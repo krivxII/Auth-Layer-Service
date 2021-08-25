@@ -1,5 +1,11 @@
 # Diagramas 
 
+## C4
+
++ [Contexto](<./.arquitectura/C4/context.md>)
++ [contenedor](<./.arquitectura/C4/container.md>)
+  + [Componente Api Gateway](<./.arquitectura/C4/component1.md>)
+
 ## Diagrama de secuencia
 
 ### Externos

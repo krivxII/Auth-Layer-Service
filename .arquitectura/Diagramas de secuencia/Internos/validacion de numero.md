@@ -1,41 +1,39 @@
-![imagen](http://www.plantuml.com/plantuml/png/dP8nJyCm48Nt-nMdpdHagH3gmCB21llLULGd7Biwsv7wxxca5g8IAOWEbP9yxtkNS_QbYjKsHgfQ8_X9vMWo2W_WWj2GWieTlqdKGOBcD3z8ROHb9Y89DHktqiGqqo6tD8YT-VMPGaxLSdI9JJ0wUOi6FKcgl9dlgSjcr_Hbtio-LhFR3vxeKju-kevthCbZLQotBrcOlcjOqkIGevSwnv4cNOSxve6rONuphENubfHt_ShuPT4IIQmS3CEow8ZIWKB_RZ24TeA9SSqVI7ncH1qr2PTMs73KKYsNs_w-8DSDc1hY1BTSXEG_NpO_RBST-v7gvxTWom4Q1ZKzWWYnuFgbOPOJf7p_0lYU_ZhZYijhhuPSmQudNUUG1jhxNnlZ9m00.png)
+![imagen](http://www.plantuml.com/plantuml/png/hP9FQkim4CRtEiNWzSi5mkEHnUi92jrFvAz1L9RCpCXDRz-9cq2TKBU5QA65zFl-3D9EZSNQa8Cbow3_YG_20rCFKiI64XF_eOSofNewYu9-FilG4097gqATGgOKdS3H8ALsVXLhCQcPEXuJ7TZmoczT63tDoP6BVPAvyGY9IMtsxaBFndjMaCSb3RvkCsZpRsbEMuBtP2fjWCokgKUnz9mYkxA41UxwbGhVc_bQaRlvt9tMeB-RpPdQqXFav5r94o5VOg76n5eTxol5MeZpeHNMgvVWRDIpLIN2SGumw5txFO84iJd0X4nMNr3k7R2l8bmeLpqFSvbyVPJhZx1rPch84yur5xSV_ErteXjPG5PG-5tsuc488hM0zOSLlb87b3xiV6j3VWS0.png)
 
 ```bash
 @startuml
-title Diagrama de secuencia, Validacion de numero 
+title Diagrama de secuencia, Envio de credenciales
 
 
-actor usuario
-boundary UI
-control server
-participant "servicio de validacion"
+actor "servicio externo"
 
 
-autonumber
-usuario -> UI : insertar numero de verificacion
-UI -> server : enviar numero de verificacion
-server -> "servicio de validacion": enviar numero de verificacion
-"servicio de validacion"  -> "servicio de validacion" : validar Numero
-
-alt credenciales validas
-
-"servicio de validacion"  -> "servicio de validacion" : recuperar token y elimina sus registros
-"servicio de validacion"  -> server  : devuelve el token
+control "api gateway"
+participant "servicio de percistencia"
+database redis
 
 
 
-UI  <-- server : devuelve el token
-usuario <-- UI : redirige
+"servicio externo" -> "api gateway" : envia numero de identificacion
+"api gateway" -> "servicio de percistencia" : envia numero de identificacion
 
-else credenciales erroneas
 
-autonumber 5
 
-"servicio de validacion"  -> server  : credenciales erroneas
+"servicio de percistencia" -> redis 
+"servicio de percistencia" <-- redis : Verifico si el numero esta asociado con algunas credenciales
 
-UI <-- server : credenciales erroneas
+alt datos  existentes
+"servicio de percistencia" -> redis 
+"servicio de percistencia" <-- redis : Se recupera el token
+"servicio de percistencia" -> redis 
+"servicio de percistencia" <-- redis : Se borran los datos asociados
+"servicio de percistencia" --> "api gateway": devuelve token
+"api gateway" --> "servicio externo"  : devuelve token
 
-usuario <-- UI : credenciales erroneas
+else 
+
+"servicio de percistencia" --> "api gateway": credenciales erroneas
+"api gateway" --> "servicio externo"  : credenciales erroneas
 
 end
 @enduml
