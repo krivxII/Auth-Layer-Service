@@ -5,12 +5,13 @@
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 Person_Ext(personAlias, "Label", "Usuario a autenticar")
-System(systemAlias, "sitema de autenticacion", "")
-System_Ext(systemAlias2, "Servidor", "sistema externo que utiliza el servicio de autenticacion")
+System(systemAlias, "sistema de autenticación", "")
+System_Ext(systemAlias2, "Servidor", "sistema externo que utiliza el servicio de autenticación")
 
-Rel(systemAlias2, systemAlias, "envia credenciales para autentificar identidad",)
+Rel(systemAlias2, systemAlias, "envía credenciales para autenticar identidad",)
 Rel_D(personAlias, systemAlias2, "introduce credenciales",)
 Rel_R(systemAlias, personAlias, "envia correo electronico con numero de identificacion",)
+
 @enduml
 ```
 
