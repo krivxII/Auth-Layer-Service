@@ -11,8 +11,8 @@ System_Ext(systemAlias2, "Servidor", "sistema externo que utiliza el servicio de
 Rel(systemAlias2, systemAlias, "envía credenciales para autenticar identidad",)
 Rel_D(personAlias, systemAlias2, "introduce credenciales",)
 Rel_R(systemAlias, personAlias, "envia correo electronico con numero de identificacion",)
-
 @enduml
+
 ```
 
 [back](./../../Diagramas.md)
