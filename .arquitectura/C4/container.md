@@ -1,13 +1,12 @@
-![image](http://www.plantuml.com/plantuml/png/jP91Qnin48Nl_XNgdXnmlBJfgQUqIQ0Kfmq9EPjPQP9CqKfYPfJObFxtIijkO4ljGo67XP5utvlHspaN1TRS-yKx2jPdX-P9DScdjcLuMJ-IFkKk2xADGJ7esiQ-JHv2PKv5dQUklVXuUbElxgytRG-YoELgUr48e82yJc_atwSOAZFuB-xsejXlhtQwbA7yx0damyeqJVb-9AKOm9jB5Ciqd9gJnGson310QIW7gEWtqA4_0hxs-n9pSC3xiUd42vK368S6SdqOMR2LFEZuQ_4QsD9ELPt-6iYRE-HdibZnxz7X-gSO2CvSxHAZI3as9__Ypuh-5Xt9_ngyBtf8P1v1yGNsn_0naCjkARZR5o7NnaSY_5r2l4K_QpPxUHPeLiqtYQ7zgfeASb1-TbG-ISR1XYawR3rYinfKs_lvx_zhWIWeHvSj6ileC5W2ZpAooxbu5Xs6Pu8PP18mJ3lnG1ROaAkr0pSDivajm6omoJ4oOpJeqIh7G3RMlYRa7ZaQXwFdmxXrrVWSWykz_mC0)
+![image](http://www.plantuml.com/plantuml/png/dLB1RXCn4BtlLmnx2bAQ5PGJfq9R2Q44eeQSerbxsWxosel7RXCG_yvubGIsfKZqDkEPz-Ozwvr9mfXovweNx8tBbk0sfLxUDat4-zaDfzlSPg5eWa_aqyo4hkaT-e8vaMGTjytvcvDbULelvas7aYZgq-PS4SYUugml_5MrskcesrnkqqI6yfrZbDTJg5SKxzY6M6ijN4O8j5KU7-1R9iY97N_NDmTILWq7i0IOYoGsgBslNrPBYXBySA0Vok60Siwn9LV8rv8nAXX_OwC23zBUX-mjnjsV-WP9sk3ZYphwt2UjqC45YOciNL7oepgQdvX3LOmka1qCRWqL-ATWQVPL0Bs5osqVIKHRLVGN_AdkNv5bUIx1Azt7dk464ztZxb_m_OTSj1EXxKuNOpdyjE7gPrLLL-H6nqREdSCEBGgeWdfQVvJWcm-QDCK-YJlz3vpkxgKEkbfg757JXXYndWwxc_Ku5Gyoo3x5OBCXC6gMl65q97liWy2ElfJy7UC813t6OyAkIyQ0RQajsiSUDlDHHaOQ3-HgWmAG8wCYFPjG983F7SK0blRqryTWrgl5bwNIdv6tkNE_0000)
 
 ```bash
 @startuml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 
-System_Ext(systemAlias2, "", "Optional Description")
-Person_Ext(personAlias, "Label", "Optional Description")
-
+System_Ext(systemAlias2, "Servidor", "sistema externo que utiliza el servicio de autenticacion")
+Person_Ext(personAlias, "Label", "Usuario a autenticar")
 
 System_Boundary(systemAlias, "sitema de autenticacion", "Optional Description"){
 Container(container2, "Mail Service", "Node.js and Express.js")
@@ -17,12 +16,12 @@ SystemDb(sexy, "redis", "Optional Description")
 }
 
 
-Rel(container1, container2, "usa","Json/Http")
-Rel(container1, container3, "usa","Json/Http")
-Rel(container3, sexy, "escribe/lee",)
+Rel(container1, container2, "llamadas api","Json/Http")
+Rel(container1, container3, "llamadas api","Json/Http")
+Rel(container3, sexy, "escribe/lee/borra",)
 Rel_U(personAlias, systemAlias2, "introduce credenciales",)
-Rel(systemAlias2, container1, "envia credenciales para autentificar identidad",)
-Rel_L(container2, personAlias, "envia correo electronico con numero de identificacion",)
+Rel(systemAlias2, container1, "envia credenciales para autentificar identidad","Json/Http")
+Rel_L(container2, personAlias, "envia correo electronico con numero de identificacion","SMTP")
 @enduml
 ```
 

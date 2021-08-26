@@ -1,12 +1,12 @@
-![image](http://www.plantuml.com/plantuml/png/XP2_QWCn38VtUmhtfWII79HEdLAIRYaDAPs3OYkDm2SRsUwVjwzyzA2NePqi2Vq-VsYTCaWklMzkYAql3iqbvvZkkqxWO_L6-L9E9Q7Om1avhspek-Y1QsQPilDqwZPtotqTlJxjkXvIHj7HSQC984PPnSflzYWfyF7nCy_YK3vuWhGmxGvEw5ijdcEcmE3D5fCL6hfsthnyARAVfU4PGucq0QE-KAeOMR2w_Y-c_lyRTQk1FqBD0VtL-jG3-Pt0M467R0ay9XD1OBGwgvSOShLsuDh5l1AFs-a9hdo8imHNB4wuO_OmlSG4DEe44Gm6FLebCTcW8pPSUfHW7Fu8dSUZANcDx4hllm40)
+![image](http://www.plantuml.com/plantuml/png/PP11Jm8n48Nl-olgdY01DZ6UF67G6oO4mfaCxIYJTAVhT8hehxVTPD75qyw-zdtpNfTHGJIrlheZjZuvD2VLBZusZS3duftqb8ufejZ0YgmB6zgcyy35Cu_gF1sRrSDyKwJzwxff8IfAbWwhx01Yb4LN-DK69GO-l5nqqlNZaoU8CrEluOY-piC-9X0A1WoaiemiI3sjTbyPsKvY_nbCaV8F68U_Toq5BfYhfUpwQxlFXpkKCxaWTS-8FGGlYiB1V2GqISdJTzQyYULgXlvVCgsgBVeRz3WVyfd0M467R0ayHjE1N9kzbMw6N9aTk7esBSJ3y_XfRh8JgmINB8wuWtSxVg4HQ8WJH30Oz6WpYSc6BB7XrABqDSaDuKhFGbuYkzJw7m00)
 
 ```bash
 @startuml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-Person_Ext(personAlias, "Label", "Optional Description")
-System(systemAlias, "sitema de autenticacion", "Optional Description")
-System_Ext(systemAlias2, "", "Optional Description")
+Person_Ext(personAlias, "Label", "Usuario a autenticar")
+System(systemAlias, "sitema de autenticacion", "")
+System_Ext(systemAlias2, "Servidor", "sistema externo que utiliza el servicio de autenticacion")
 
 Rel(systemAlias2, systemAlias, "envia credenciales para autentificar identidad",)
 Rel_D(personAlias, systemAlias2, "introduce credenciales",)
