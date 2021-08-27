@@ -1,27 +1,40 @@
-![image](http://www.plantuml.com/plantuml/png/dLB1RXCn4BtlLmnx2bAQ5PGJfq9R2Q44eeQSerbxsWxosel7RXCG_yvubGIsfKZqDkEPz-Ozwvr9mfXovweNx8tBbk0sfLxUDat4-zaDfzlSPg5eWa_aqyo4hkaT-e8vaMGTjytvcvDbULelvas7aYZgq-PS4SYUugml_5MrskcesrnkqqI6yfrZbDTJg5SKxzY6M6ijN4O8j5KU7-1R9iY97N_NDmTILWq7i0IOYoGsgBslNrPBYXBySA0Vok60Siwn9LV8rv8nAXX_OwC23zBUX-mjnjsV-WP9sk3ZYphwt2UjqC45YOciNL7oepgQdvX3LOmka1qCRWqL-ATWQVPL0Bs5osqVIKHRLVGN_AdkNv5bUIx1Azt7dk464ztZxb_m_OTSj1EXxKuNOpdyjE7gPrLLL-H6nqREdSCEBGgeWdfQVvJWcm-QDCK-YJlz3vpkxgKEkbfg757JXXYndWwxc_Ku5Gyoo3x5OBCXC6gMl65q97liWy2ElfJy7UC813t6OyAkIyQ0RQajsiSUDlDHHaOQ3-HgWmAG8wCYFPjG983F7SK0blRqryTWrgl5bwNIdv6tkNE_0000)
+![image](http://www.plantuml.com/plantuml/png/ZLDDKnf14BtpApfSWbKebQgSSbA1KXC4IjQoSjfgPZeurkpCPZvKaigFoG_8ARTS-MFfMLPWrHWv3M-cttlTh_VG1tGX5hhrHXcXeoIu3g7q7tezXtS72nMkupnwSiAQG2OS25lqIeqcrUpx8BMQz_hlzwS9kZmVzGhqWHn3UPyhK1bo1sNYVmlHS771912k2RvOhUsTCWlG_0ZGI6XSA-VvP875GLk1MY-PO-FogG3VZeu-JowpF9jCyy7aQjpPss97itpsQPZrJncieQkpx3GV3K-6um63hQ229XWeN3Wi4996rJD9w_YV1g-ujVKDnZGC9L2erM-J42KJ856sMbDotfgEY3xOWbmNsfS-ebEslJq2RZbSczLdoqIU7zje9BfbHxpZnwzJRE_1znRmRpEGZYTtgzXtxaWgpqop6aY55PQyVCHRd0cdoj25uNtfo5VmYAWBvFbYJh04qgfGXarWi3xLQuGvUkBZ6cFxJNKirO9vZae59nZe3fSlg4sZ2JPnSJSE9TOAMEfDiryZGO66RXW6pIPiSDQdTIcjuJ9wQg50fVCq1NAFkY_8UBmXj_g5BxWQcbj-0AJ1HCxGDWOEwDN2eBI06c8TQCdqmZf7zh6PmRmZCM2Q6JCFwcDIkKX9m2vomcIoQhAUDteh54lvklLQhkwuzMEpESFxi8sTxWCvOvdm0Qf6lVgvI4bQg52XR3NQ69HMtn3-j-ArD2kdtmNfP_Hsek-ZrjM4PvDnxpJBfZEkJ5NhDus46WNebqPquHzrpTL-NMa-QYx4pgV9GIjyDkITGDCAdMVJDkmr-wuzFAGBzSSpN7yxtMEknbIyTZMsp5z5tgvvjZwUIUxC16Tb50I2PSW8XPeyM32hFq_SCkCX6HaB_HS0)
 
 ```bash
 @startuml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+' uncomment the following line and comment the first to use locally
+' !include C4_Container.puml
 
+' LAYOUT_TOP_DOWN()
+' LAYOUT_AS_SKETCH()
+LAYOUT_WITH_LEGEND()
 
-System_Ext(systemAlias2, "Servidor", "sistema externo que utiliza el servicio de autenticacion")
-Person_Ext(personAlias, "Label", "Usuario a autenticar")
+title Diagrama de Contenedor del sistema de autenticación de identidad
 
-System_Boundary(systemAlias, "sitema de autenticacion", "Optional Description"){
-Container(container2, "Mail Service", "Node.js and Express.js")
-Container(container3, "Redis Service", "Node.js and Express.js")
-Container(container1, "api gateway", "Node.js and Express.js")
-SystemDb(sexy, "redis", "Optional Description")
+Person(customer, "Usuario", "Usuario a autenticar")
+
+System_Boundary(c1, "sistema de autenticación de identidad") {
+    Container(servidor_redis, "Servidor de redis", "JavaScript, Express", "Lee, escribe y elimina datos de la base de datos")
+    Container(apig, "Api Gateway", "JavaScript, Express", "Punto de entrada de la aplicación que maneja a los otros componentes")
+    Container(mail_server, "Servidor de mensajería", "JavaScript, Express", "Envía el numero de identidad asignado al usuario por correo")
+    ContainerDb(database, "Database", "Redis Database", "Guarda los datos asociados a los usuarios")
+   
 }
 
+System_Ext(servidor_externo, "servidor", "Página o servicio que utiliza el sistema de autenticación de usuario")
 
-Rel(container1, container2, "llamadas api","Json/Http")
-Rel(container1, container3, "llamadas api","Json/Http")
-Rel(container3, sexy, "escribe/lee/borra",)
-Rel_U(personAlias, systemAlias2, "introduce credenciales",)
-Rel(systemAlias2, container1, "envia credenciales para autentificar identidad","Json/Http")
-Rel_L(container2, personAlias, "envia correo electronico con numero de identificacion","SMTP")
+
+
+
+Rel(servidor_externo, apig, "Api Call", "JSON/HTTPS")
+Rel(apig, mail_server, "Api Call", "async, JSON/HTTPS")
+Rel(apig, servidor_redis, "Api Call", "async, JSON/HTTPS")
+Rel_L(mail_server, customer, "Envia numero de identidad por correo", "SMTP" )
+
+Rel(servidor_redis,database , "Lee,Escribe,Borra", "sync, Node Redis")
+
+Rel(customer, servidor_externo, "Introduce credenciales o número de identidad")
 @enduml
 ```
 
