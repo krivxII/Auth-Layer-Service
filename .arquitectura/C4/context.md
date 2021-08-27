@@ -1,16 +1,24 @@
-![image](http://www.plantuml.com/plantuml/png/RP71Rk9038RlUGflJY01aLPxsXChjZSg8H1dP6RSOcdYIJqpbFQTUkeZy6ATYKfBK4zn_lZ__DkPXuWQK-kgNop69KjmYB4BVvj6yNdsoF6GzYcG6Y-H9CwCRvlEeHJFD4JhUDyi_anNHThUBviMGoJDqcwH7SX2EkiAlrgH1Y-xkrCSTNtvpp662THBt9EhSx4D2PKz860gmzYWrkDgyvAHxIZqZuifS7b3iFJTRFZyBWNqPIhJhes_yySDwP6jr_gAGgT8AXwU4a6AxFWrQmv2QJNiVvWohgerkHlsC2B9yVo6O9GiYM5q5A13lTuEs9RAegqdumBS_HyUvoOxIrHlaw41zU9T3syq09KqZ62yAdaWHoQJX8tFae2abhIi-HdeeT_JIo7FIMp_0py0)
+![image](http://www.plantuml.com/plantuml/png/VP11Jnj138Nl-olSlJH8G2uzzKIXKOiKQ0I9gfvMpgpPMCoEKyzC2F--dcqWIHNrvdqxxtlFlee9DUNULnyuE9zRWbLAw_XvF5PykUmuhV8oHr8d8L58bqxwyTfZA9wBc5hFo_7DfujPaHPtqt6FCP6QrDmKnpPThWlz8-HWrjuGa5O4J-Azl73em7CWmD32qM_MQ9E0HOCNXzw_6kEzux_uQlhbru_5lFbvE__UJ2VV9lTVHsTLbJXvWiTNgzJ3pW0jOwVOMmM5MvCqK89h3C_MPlUsgcQaKSB8vPYa9ps7UX4pAakz7m41SpaAEzJwhFhh7PcsQk8mszl8PK1eQV_OiOGYS5k-MsmBr19xJWGOnJ4gv03vFSS-GhOUScGpcPrOyYwwcMpJA99kk1LjQ5js4qE_IKCCTXmG10RH6Vrt9iY9FKS4yl2_mhj29R5w8D_S4tUhfUW83fQ6StWx6rZW96mOJxPVYu8JLHgE-dWtdzLmDd2lqJsVMEGGUnkIIfiTWLCof6Fq545E9TK3zGJmg7NzG1t7f7XuUe4DAJ-nG_2u9nhUGy-nbrBvYaARU_y7)
 
 ```bash
 @startuml
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+' uncomment the following line and comment the first to use locally
+' !include C4_Context.puml
 
-Person_Ext(personAlias, "Label", "Usuario a autenticar")
-System(systemAlias, "sistema de autenticación", "")
-System_Ext(systemAlias2, "Servidor", "sistema externo que utiliza el servicio de autenticación")
+LAYOUT_WITH_LEGEND()
 
-Rel(systemAlias2, systemAlias, "envía credenciales para autenticar identidad",)
-Rel_D(personAlias, systemAlias2, "introduce credenciales",)
-Rel_R(systemAlias, personAlias, "envia correo electronico con numero de identificacion",)
+title System Context diagram for Internet Banking System
+
+Person(customer, "Usuario", "Usuario a autenticar")
+System(auth_system, "sistema de autenticación de identidad", "Permite asociar un usuario a un número de identidad único")
+
+System_Ext(servidor_externo, "servidor", "Página o servicio que utiliza el sistema de autenticación de usuario")
+
+
+Rel_Neighbor( auth_system , customer , "Envia numero de identidad por correo", "SMTP" )
+Rel_Back(servidor_externo, customer , "Introduce credenciales o número de identidad")
+Rel(servidor_externo, auth_system ,"Registra un usuario o verifica la identidad del mismo" )
 @enduml
 
 ```
