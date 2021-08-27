@@ -1,4 +1,4 @@
-![image](http://www.plantuml.com/plantuml/png/VL7DRXCn4BxlKmnx8PNQvCA9Ksc9e59QeZOHuhIQsDFDg5uxZEsqvMru1cwzviKOBscRGCHjzjlvVhxnQKmeANUkUiFUk6m9bYcjullHIF1-s79QvaME92RuH3uDJUX6AuU-S4vYieuNe_Dt9zC2pIydemvZ8b6eEI-CXpHS5VMtaBrIEvM0j2Iu3Sw5U_OjEFO4w2ti_MQ9EWLGQt31e7EFgl6IyM_vQlBXsvVvhFbwCVlSJCQVnbSV1qTLbJWvWfj7ZTJ1bW2MiHNiD8B0XKBYAS4P-ZjDizsjgYb937vWSaoX8pc6UXup2eVwTGG4pEKeR53ge-eFTw3OiedzhBkHou1WwNNPyEQNBmZR0bYqHLKjEqww5eDX5CWUyekHVlZDaoO9UppOF7asGSstxitu8GqYoPfja4RhQhsWuizGRxJvsR972D2ZHWs-PuASsF4F17Bmtz3RKCMpkYRNN16toqMG0UmqXsDulfsEzTYl6S7dVmkiWe098jHVzkPoDgtXgDSzGtDteCgkh3wV19iDWH5IISFeA48uUAkwbpsWk1UxlgPMsmlktZ_0ceHlsI0ut0bloK77iGibyobvcplt6m00)
+![image](http://www.plantuml.com/plantuml/png/ZPB1JjjS48NtVehvlVaJ2SYcgwve8If8G2D8L7LbJQu7PzJhE-dSUmFqRVeCtR7DYtNi1fAqaThT-DZdEtD6Feq9DUNM5_znS3xN18kKbl7jQAJuSD9mMkHvZgHEGgAGJfoqewN7q7cEOwezpqTdRuuddJIxlXgr61EfITLPvtXC9ykE_Z_aODRM490M1FVYlJnmQC1p8C1GmzvhrcYJW4M35uVUFndZTSVVySNLkyyVPzFgq-NqeheQVnZVd0-6HP4uUO9pnaQnHJ3ZnYKsUuXik_xICNVjsA7ZzO_GALntGerrKKn8euI1op59Ite4vIncL9PoEm9k6LeEYxkdZZqmRL75VhPl_osmerfaoua0epX6XHmWlmRPGrW_soQovuFrSs0d5hv9hyQFQH19LroBLbQRD8Z1NwG-QFszuO0WqAlE0hvcWfpOypU4lrrfirINMToIhsw8cyLST00xpU48NcvdOpaEAqO8-Sy2Ir5meahzPU-kfvCIXZttFRel1whiOYz3Kgcp8t1AXdICdYB8mLkLFVO0SM_jyfOQQw-uUt-15IdViqFmk2NsVrJBiPNIZ1TJstrOd5AeS-j_0W00)
 
 ```bash
 @startuml
@@ -8,7 +8,7 @@
 
 LAYOUT_WITH_LEGEND()
 
-title System Context diagram for Internet Banking System
+title Diagrama de Contexto del sistema de autenticación de identidad
 
 Person(customer, "Usuario", "Usuario a autenticar")
 System(auth_system, "sistema de autenticación de identidad", "Permite asociar un usuario a un número de identidad único")
@@ -18,7 +18,7 @@ System_Ext(servidor_externo, "servidor", "Página o servicio que utiliza el sist
 
 Rel_Neighbor( auth_system , customer , "Envia numero de identidad por correo", "SMTP" )
 Rel_Back(servidor_externo, customer , "Introduce credenciales o número de identidad")
-Rel(servidor_externo, auth_system ,"Registra un usuario o verifica la identidad del mismo" )
+Rel(servidor_externo, auth_system ,"Registra un usuario o verifica la identidad del mismo" ,"HTTP")
 @enduml
 
 ```
