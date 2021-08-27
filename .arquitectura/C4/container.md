@@ -1,4 +1,4 @@
-![image](http://www.plantuml.com/plantuml/png/ZLDDKnf14BtpApfSWbKebQgSSbA1KXC4IjQoSjfgPZeurkpCPZvKaigFoG_8ARTS-MFfMLPWrHWv3M-cttlTh_VG1tGX5hhrHXcXeoIu3g7q7tezXtS72nMkupnwSiAQG2OS25lqIeqcrUpx8BMQz_hlzwS9kZmVzGhqWHn3UPyhK1bo1sNYVmlHS771912k2RvOhUsTCWlG_0ZGI6XSA-VvP875GLk1MY-PO-FogG3VZeu-JowpF9jCyy7aQjpPss97itpsQPZrJncieQkpx3GV3K-6um63hQ229XWeN3Wi4996rJD9w_YV1g-ujVKDnZGC9L2erM-J42KJ856sMbDotfgEY3xOWbmNsfS-ebEslJq2RZbSczLdoqIU7zje9BfbHxpZnwzJRE_1znRmRpEGZYTtgzXtxaWgpqop6aY55PQyVCHRd0cdoj25uNtfo5VmYAWBvFbYJh04qgfGXarWi3xLQuGvUkBZ6cFxJNKirO9vZae59nZe3fSlg4sZ2JPnSJSE9TOAMEfDiryZGO66RXW6pIPiSDQdTIcjuJ9wQg50fVCq1NAFkY_8UBmXj_g5BxWQcbj-0AJ1HCxGDWOEwDN2eBI06c8TQCdqmZf7zh6PmRmZCM2Q6JCFwcDIkKX9m2vomcIoQhAUDteh54lvklLQhkwuzMEpESFxi8sTxWCvOvdm0Qf6lVgvI4bQg52XR3NQ69HMtn3-j-ArD2kdtmNfP_Hsek-ZrjM4PvDnxpJBfZEkJ5NhDus46WNebqPquHzrpTL-NMa-QYx4pgV9GIjyDkITGDCAdMVJDkmr-wuzFAGBzSSpN7yxtMEknbIyTZMsp5z5tgvvjZwUIUxC16Tb50I2PSW8XPeyM32hFq_SCkCX6HaB_HS0)
+![image](http://www.plantuml.com/plantuml/png/ZLDDJmCt5BpdLxpcqaGAH9LwwWb88g0DISG6ePvMB_PhCFBQMty0QTKVqn_GKs-zve_rUNV9ieHISdB6dddZcVMP3-X2B7Jl6sM4ZfBW8OJI_p0UEtm-tQhm43VHanFM13BXLDXYN6eqYNFYWzHgCvvyVx9AqDtDV5oW3-GOoYVCG6N8dPP9_rk8Xia5Yq1u8FZ5QcsVbTc2vaE0Ha9dMpdFAmiy7BGLgFMEDGukZmVmxlpyv-NTEbylL_bqURyO35liFCkpdsRhoHM33NH_lRxAvxFBsMBAO2-ee0cc2hSE2uGqexepIUludmQlVA1w1sCAGmaKQl-tIOYI2P0eUxqLEM_DG4GVR45k1Fqx7z4fss-NWAs6w_FqR9V4ymiRZKIt6uZl-F3N9lQ7y7iF-7S8PE39FIdsdJkIohDIrW29M679ou_uX9bmgWmZcBsKZdm5pub6G9utDWGx8AqAPTW41kiJNoDiq1ClQsm40OkD8WDRuk48ci-PM92plcCKeb6YnWHAXDZ4Cdpd7akrPH_dfO9B3FICkq_Shg89Dado4CUgZKCizI6iNoD1WOOU4MfpDYHhmXQbDKmZVsIXGANpb2AvT-aLP3m-ajl_XP-ucfadFW2aco2wEQ1NMuFI0khN4A1aUM6TewCyffk1n80fSrQUDiiqvJOr2M-HInQJzINhlj1ReL3ogaQRSSsDUtySlhpPIsW_6te9v8nbmLUeYdh_vrOP10iLAfIjeer1QVKRmlyzaRRkzBib_S6yDzLFKEiguMov65-jrwkCcObLd-aqr26WtnanWl_WTP_6rwZvlFj1j4yx5QtmmvBRGfDoThDUzM7OlNVZuRLTQ1xVh7vxemjcOoBNhXQMzQlA-urEw-E3vgvDS5P6GI1u31cXK9C72sR_pv5RLZmZ8sEX_mK0)
 
 ```bash
 @startuml
@@ -15,7 +15,7 @@ title Diagrama de Contenedor del sistema de autenticación de identidad
 Person(customer, "Usuario", "Usuario a autenticar")
 
 System_Boundary(c1, "sistema de autenticación de identidad") {
-    Container(servidor_redis, "Servidor de redis", "JavaScript, Express", "Lee, escribe y elimina datos de la base de datos")
+    Container(servidor_redis, "Servidor de redis", "JavaScript, Express", "Lee, escribe y elimina datos de la base de datos, tambien genera los numeros de identidad unicos de cada usuario")
     Container(apig, "Api Gateway", "JavaScript, Express", "Punto de entrada de la aplicación que maneja a los otros componentes")
     Container(mail_server, "Servidor de mensajería", "JavaScript, Express", "Envía el numero de identidad asignado al usuario por correo")
     ContainerDb(database, "Database", "Redis Database", "Guarda los datos asociados a los usuarios")
