@@ -1,29 +1,29 @@
-![image](http://www.plantuml.com/plantuml/png/jLHDJnin4BtdLxWvfH9abRIddX0V4ggWHQ5mHRFs0AwyjkiF8Atwtpkp9hiBR16bxI7AUlpUcvatkxCJ4uIK6pDvewqqMQ6uJid73rKLu7P-fTDrhdF489rDQDDSkgRo1YnpjcDIHjVLtllj4mwT7HzL3SI4WK8NUyG0RJ7C_N_IRxopn2dwaydfcgwQYuExDCEu9QQd66wqSc5Apr7p7GYy8xPrubj6aPCs-Zl5Z8WCbTe9gWyo5w8bqDbEtqvEC4HdMrcF97K4DHhMF8iP0d6WfmJ2zvNikcmLXFKihjiIk8Ad6UZgiq_q14RiOvH1quap_vXCEW_twrb0fRcjzl_th06fBw01ROXnJ7-YjKKYAtno2kTVem2hnC6T3nWZ7JbpP-vClci8ALq8w0HFAJXZi3Nr_WJaCRU5h5047lANX6sSogRrjqWn7-sDXljp56XGafpLqh72pz560X9lnGxySH_BLMlUbOuflAwJvJb1Ry1erKxkTHg1vz2PqGtp42GAvp6qqaXsM650r12HSGfIwmhPCkgBt8GMf0LUYoj8U0lh5xkp-6jt5l_0dKKpT6VpQZ3_clqn1XfGGAtqdsoFUoGrQlJpGWL5EiLd-gtG5Aao_9xdzNHh-Z4wMnscv8aoGAvUWYHGQJT7U1WCZuBdOq5YqfVrVA82NJ9_kU5l5G4gSZHAWSsUEU2bKcDb4AjTChX3yHP4HcWUgShafoGIMgd1ODp0648TTT_v42Cy110nYykSCZtrhys8LqNel1EokS7mT5KNJUaQ7rmDGMZ5TmhKY6HhNTbCW_ulZcObvl7HTXek9mhPGGqbpMMtpQUdnrzEACqEMfKRymi0)
+![image](http://www.plantuml.com/plantuml/png/jLLDJnin4BtdLxWvfH9abRIddX0V4ggWHQ5mHRFs45nvRTSVG5hrL_4J-6ETMPDDGXT4QNk8TltotXlFy-xiJamGKcxCu8ssqcI5uYeb7pzKLO2RyLodgrpdY44wcz2ciNHDvGrOrcp7f8okgxttsoSCdHqVLGt4X86WYprIWBOOnlu_-JVUMT8K_wIJGR6lOHwW0K65EW96MXeHDKdBNv2vc9OWzVsTPKGh1XIemU1qmRoBWziqmhWbXgSOhhLoOKZtIm-yJHYi4zyoYfoqqTz1S0ccIkr-hp5yEpZ149rjVJsIrn7KQDZqB6O898AL9X1_q6rbrsMh82n6SK7q9_jWhyy-QMV1Y7sCCcXUKUqVWq5t7FlrAA3It5bxVLgr9bfjeG5jI75C5z4c8v4TFZc5uwzHW5NYuDO7Z96MNBaxXf5yrn1JkX3G2Jxmu8p1DjU75L3Ct1UoGp7Or4-vzFsTogRDk7Yn0Tfh3G_hAD2W93-hfMEBdxsT12JTZ2FuuqQcipQzkOuflAwLwJbHhy5e1PB2Vfr7s4oZEyv3a2YSnz1wOnHeXG5HGqJcAKXjB9HBRp1o2Kt82xmMSqXu0uiNnpFvwtWc_o2UITFtiBG1NN50na032gA0pHUty1vvzKVzl5DXaH4bNNupDCMhdFzAv_LmQ_WnEbiTfkH9iiQSlOH9fD9mZh09XaVWUHz8IdgxdYzKg5FMJvVwhM90c-n52LZEcWCUB3LM1h7QfOGx5iz2P8RcGrLPef0aGYir68nB6bEee-vLN-S83m54pE8ofqntxODJPc9FMCNfl7EokS7GCxABgtID3ww6iFf4z7YsuV5ysaZWucXKC8-FHjJwX2B8hcsYbBbiT-5u_wV7Nqwep0vQnH-wNm00)
 
 ```bash
 @startuml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+title Diagrama de Componentes del sistema de autenticación de identidad
 
-
-System_Ext(es, "Servidor", "sistema externo que utiliza el servicio de autenticacion")
+System_Ext(es, "Servidor", "sistema externo que utiliza el servicio de autenticación")
 Person_Ext(pe, "Label", "Usuario a autenticar")
 
 
 
-System_Boundary(sy, "sitema de autenticacion", "Optional Description"){
+System_Boundary(sy, "sistema de autenticación", "Optional Description"){
 
 ContainerDb(redis, "redis", "Optional Description")
 
 Container_Boundary(mail, "Mail Service", "Node.js and Express.js"){
 Component(c3m, "correo controller", "controlador de expres.js")
-Component(c3m2, "modulo de correo", "envia correos electronicos")
+Component(c3m2, "Módulo de correo", "envia correos electronicos")
 }
 
 Container_Boundary(re, "Redis Service", "Node.js and Express.js"){
 Component(c2R, "registro controller", "controlador de expres.js")
 Component(c2V, "validacion controller", "controlador de expres.js")
-Component(c2r, "Modulo de redis", "Hace operaciones en la base de datos")
+Component(c2r, "Módulo de redis", "Hace operaciones en la base de datos")
 
 }
 
@@ -31,8 +31,8 @@ Component(c2r, "Modulo de redis", "Hace operaciones en la base de datos")
 Container_Boundary(container1, "api gateway", "Node.js and Express.js"){
 Component(c1R, "registro controller", "controlador de expres.js")
 Component(c1V, "validacion controller", "controlador de expres.js")
-Component(c1m, "Modulo de correos", "hace llamadas al servicio de correo")
-Component(c1r, "Modulo de redis", "hace llamadas al servicio de redis")
+Component(c1m, "Módulo de correos", "hace llamadas al servicio de correo")
+Component(c1r, "Módulo de redis", "hace llamadas al servicio de redis")
 
 
 }
@@ -51,8 +51,8 @@ Rel(c2V, c2r, "usa",)
 Rel(c2R, c2r, "usa",)
 Rel(c2r, redis, "Escribe/lee/Borra",)
 Rel(pe, es, "introduce credenciales",)
-Rel(es, c1R, "envia credenciales para su futura validacion","Json/Http")
-Rel(es, c1V, "envia numero de autenticacion para comprobar identidad","Json/Http")
+Rel(es, c1R, "envia credenciales para su futura validación","Json/Http")
+Rel(es, c1V, "envia numero de autenticación para comprobar identidad","Json/Http")
 Rel(c3m, c3m2, "usa",)
 Rel_L(c3m2, pe, "envia correo electronico con numero de identificacion","SMTP")
 @enduml
