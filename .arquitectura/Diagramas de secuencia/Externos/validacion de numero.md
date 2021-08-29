@@ -1,42 +1,44 @@
-![imagen](http://www.plantuml.com/plantuml/png/dP8nJyCm48Nt-nMdpdHagH3gmCB21llLULGd7Biwsv7wxxca5g8IAOWEbP9yxtkNS_QbYjKsHgfQ8_X9vMWo2W_WWj2GWieTlqdKGOBcD3z8ROHb9Y89DHktqiGqqo6tD8YT-VMPGaxLSdI9JJ0wUOi6FKcgl9dlgSjcr_Hbtio-LhFR3vxeKju-kevthCbZLQotBrcOlcjOqkIGevSwnv4cNOSxve6rONuphENubfHt_ShuPT4IIQmS3CEow8ZIWKB_RZ24TeA9SSqVI7ncH1qr2PTMs73KKYsNs_w-8DSDc1hY1BTSXEG_NpO_RBST-v7gvxTWom4Q1ZKzWWYnuFgbOPOJf7p_0lYU_ZhZYijhhuPSmQudNUUG1jhxNnlZ9m00.png)
+![imagen](http://www.plantuml.com/plantuml/png/fPEnJWCn38PtFuNLcOui5K8TM5ZOO7SJKrdaaif9JkhZy0myGbyCfmqg5LmFYGxLvVpx-_qdkNKkfAKE0OgKmFWWj5KQ23rZPbSvEg4RVA4WdfmSFcAhn3gmflOadcEnaaS085UIOisLL19iKesUT8_FZ-1IB9g28NLaXPrvYfCTnOABziuMHznuzbaOiADmUMyGNA544nVIRmCOJbx5aG5Y6q16AjmihS7QJeRMod6KwSOkiuR9SJfYthjdd0JXLHjSzQNYqz7e3BwoKnGAEcL_FAx06SV3Uwjd-CSSogxkM4cnf3UEk4SECaWap3LRTIkvQCep3drhZUTvh1n6Dio92FQpOyAxvRBBVbNrMz1afsjWGKLbom0SCby6PrMpvfQSQacn3Xl3ti9VfvoYUPu_1xGqbs7cOL_QdoddUviEWQE7jVsrZnZX4m00.png)
 
 ```bash
 @startuml
-title Diagrama de secuencia, Validacion de numero 
+title Diagrama de secuencia, Validación de numero de identidad 
 
 
 actor usuario
 boundary UI
 control server
-participant "servicio de validacion"
+participant "servicio de validación"
 
 
-autonumber
 usuario -> UI : insertar numero de verificacion
+activate UI
 UI -> server : enviar numero de verificacion
-server -> "servicio de validacion": enviar numero de verificacion
-"servicio de validacion"  -> "servicio de validacion" : validar Numero
+server -> "servicio de validación": enviar numero de verificacion
+activate server
+"servicio de validación"  -> "servicio de validación" : validar Numero
+activate "servicio de validación"
 
-alt credenciales validas
+alt credenciales válidas
 
-"servicio de validacion"  -> "servicio de validacion" : recuperar token y elimina sus registros
-"servicio de validacion"  -> server  : devuelve el token
+"servicio de validación"  -> "servicio de validación" : recuperar token y elimina sus registros
+"servicio de validación"  -> server  : devuelve el token
 
 
 
 UI  <-- server : devuelve el token
 usuario <-- UI : redirige
 
-else credenciales erroneas
+else credenciales erróneas
 
 autonumber 5
 
-"servicio de validacion"  -> server  : credenciales erroneas
-
-UI <-- server : credenciales erroneas
-
-usuario <-- UI : credenciales erroneas
-
+"servicio de validación"  -> server  : credenciales erróneas
+deactivate "servicio de validación" 
+UI <-- server : credenciales erróneas
+deactivate  server 
+usuario <-- UI : credenciales erróneas
+deactivate  UI  
 end
 @enduml
 ```
