@@ -1,47 +1,60 @@
-![imagen](http://www.plantuml.com/plantuml/png/jPJ1ZjGm38RlUGghP_O5HWYj13m14dTluXq2gLtPpi2yFUwK7ePkoo91ZydlxtUittqqH_K-jkJL6y67YcV54Q4G6ELEd2k-WOzygJAVPQLoEsjaAINCBWg3aLvg3WNzS5AM8QwoiAiq672gS4QdxtWTqXHkePoGVIrRm1DfhkOtze5i93RyIZgB2Ze-eH4ebMeflcqZyF3klWCu0SLZ45o-4SCLigYI03NAhi8rIxel2C9-fw_1fIOomV05pKD7J0gTWVj8Aj1doP1s7Vxi_pxyLbfSrqBizRbc33qVWvV9mP7exSF3eWgdpwGpMC0gK5izoHoX6nP9n2NzByTribTS7D4av4K0GLpN2QI4pQ6WYqK6Rb0d-xTDVI9u4bLaQ6A_l92zdhjOMcRmAiCJO1in4-CwolM9IveE6R_d-XIQIwTseKqM2fRTI6-sQitp2v2Nqxq7carMs5uw0TlV8JVR71PADlLR90ozsZDcbr2dUs6KRlzJX_MFnAMFxIS0.png)
+![imagen](http://www.plantuml.com/plantuml/png/lLL1Zjim3Bph5OJFpGU2ebYWVK4BzCwrPbErYcYGTBfvL4zxssi-LaLn0oI1KnSerbUDPeOZadumP_LncuCdpw1FYJVAMwO8ClGZIf_u7Nt69fchK0IDDh8c2I5mxwBK6NIN-YI4PuSMwUfHBwN2CtKy9DgmuoVlkp1KhOeSkFZvMkCSe5O5cjeTs1R5-3lqyAkY8Zi_ie4KCLcetwqJMdsuj41hGjdL--Jo0uNsr8igX93HknvUIkhbM5ZQiUFA_YLJfPwlOPbEo283TT_Ol09He3GMAeVNBLJey7e4TMStzoARFVgxpu-AmmkLiMb6K8eedfvIp_L2EQkVOgRxIWj0xrUh2RMchz0cf6I9aF-OW3dJQ1mb19GOtix3z4XxFdbWaugFGapYAjFBjDRFJf5TZF3SU1qM_gklBw17KUL2MMpIuk9fCug5APT5YclYlEKUXQTyprMUUZD4NEPxb_HweDOLinkHTsZfNFHGv5Z9bxJl6JCtxhV3DmzjevTQjTTsPkPmZghfJ7Gp4r8PYFE_iTwcI5L5OSFOsixOapsrxPeuH2n8vpgUAd2x3U-hp2oz1vHu_3zG-0q0.png)
 
 ```bash
 @startuml
-title Diagrama de secuencia, Envio de credenciales
+title Diagrama de secuencia, Registro de usuario
 
 
 actor "servicio externo"
 
 
 control "api gateway"
-participant "servicio de percistencia"
-participant "servicio de mensajeria"
+participant "servicio de persistencia"
+participant "servicio de mensajería"
 database redis
 
 
 
-"servicio externo" -> "api gateway" : envia token y correo electronico
-"api gateway" -> "servicio de percistencia" : envia token y correo electronico
+"servicio externo" -> "api gateway" : envía token y correo electrónico
+activate "api gateway"
+"api gateway" -> "servicio de persistencia" : envía token y correo electrónico
 
-loop "hasta tener un numero unico"
-"servicio de percistencia" -> "servicio de percistencia" : Creo numero de identificacion
-"servicio de percistencia" -> redis 
-"servicio de percistencia" <-- redis : Verifico si el numero esta usado
+loop "hasta tener un número único"
+activate "servicio de persistencia"
+"servicio de persistencia" -> "servicio de persistencia" : Creó numero de identificacion
+activate redis 
+"servicio de persistencia" -> redis 
+"servicio de persistencia" <-- redis : Verificar si el numero esta usado
+
 end
 
-"servicio de percistencia" -> redis 
-"servicio de percistencia" <-- redis : Verifico si correo ya esta asociado a otro numero
+activate redis 
+"servicio de persistencia" -> redis 
+"servicio de persistencia" <-- redis : Verificar si correo ya esta asociado a otro número
+
 
 alt datos existentes
 
-"servicio de percistencia" -> redis 
-"servicio de percistencia" <-- redis : Se borran los datos antiguos
+"servicio de persistencia" -> redis 
+"servicio de persistencia" <-- redis : Se borran los datos antiguos
+
 
 end
 
 
 
-"servicio de percistencia" -> redis: almacena numero correo y token
-"servicio de percistencia" --> "api gateway": devuelve numero de identidad
-"api gateway" -> "servicio de mensajeria": envia numero de identidad y correo electronico
-"servicio de mensajeria" -> : envia numero de identificacion al correo electronico
-"servicio de mensajeria" --> "api gateway"  : respuesta satisfactoria
+"servicio de persistencia" -> redis: almacena numero correo y token
+deactivate redis
+"servicio de persistencia" --> "api gateway": devuelve número de identidad
+deactivate "servicio de persistencia"
+activate "servicio de mensajería"
+"api gateway" -> "servicio de mensajería": envia numero de identidad y correo electrónico
+"servicio de mensajería" -> : envia numero de identificación al correo electrónico
+"servicio de mensajería" --> "api gateway"  : respuesta satisfactoria
+deactivate "servicio de mensajería"
+
 "api gateway" --> "servicio externo"  : respuesta satisfactoria
+deactivate "api gateway"
 @enduml
 ```
 
