@@ -1,20 +1,23 @@
-![imagen](http://www.plantuml.com/plantuml/png/TOvHJiGm44F_Smf_Tg_G_M3Fm0s6n2j6cYRLJ5A9szFj2b44V4HohF6pRz75-rWi7IBDhypwHgpichNLQvetCIq2avEfTqnVFpmFNYxexwoOFXYN1CoicmgAz1OGGswrix8qHtdmFMliHbPvufon3aQN_tY5sw1jX4aWEyiHDWOasgwA73qZXhYsQw85CTLs6cC2VFSK6k8nOf7Vam3MalQdzxz8Pmhetlnd97fRqstNOx5F.png)
+![imagen](http://www.plantuml.com/plantuml/png/ROyzRYin38HxdM9A6tWdi8ld8YT8aPvPZHC2NCaGjGluE3b0gdHfzsAHvH_4Y0i1n73cqt3dLKgTHWjLgn5FAcz5Ha4aPAWwQvH8_uSNiJOEcjDffP6fdbQXvyFccOE-4WTMFNcsOJFt04mkulBLLDrZTVNWxFY_Hdrdmkf8NmTWmpGldu8eDJl4CEHKcHXpGMI35LTlmg1ovXNwOQ9NmRnyF2H6pXDj9amSGs7iQQD3FBSfIlzeyacAvcqlOJfg4bZsIvF8cmD7q92Mxv4bNnajHtDYbVBlCqo0MyCEwVL7-NjCIp75q9xk7x7kE60fkMplCbxp8UpQF8ts0m00.png)
 
 ```bash
 @startuml
+title Diagrama de actividades, Validacion de identidad
 start
 :Recibe peticion;
-:valida la peticion;
+:valida la petición;
 if (peticion valida?) then (yes)
-  :envia datos al contenedor de percistencia;
-if (respuesta valida?) then (yes)
+  :envía datos al contenedor de persistencia;
+if (respuesta válida?) then (yes)
   :devuelve las credenciales asociadas al usuario;
+  :elimina los datos del usuario y el número asociado;
 else (no)
-  :envia la  respuesta del sistema de percistencia;
+  :envía la  respuesta del sistema de persistencia;
+
   end
 endif
 else (no)
-  :envia respuesta de error;
+  :envía respuesta de error;
   end
 endif
 stop
