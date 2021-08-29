@@ -1,4 +1,4 @@
-![imagen](http://www.plantuml.com/plantuml/png/fPEnJWCn38PtFuNLcOui5K8TM5ZOO7SJKrdaaif9JkhZy0myGbyCfmqg5LmFYGxLvVpx-_qdkNKkfAKE0OgKmFWWj5KQ23rZPbSvEg4RVA4WdfmSFcAhn3gmflOadcEnaaS085UIOisLL19iKesUT8_FZ-1IB9g28NLaXPrvYfCTnOABziuMHznuzbaOiADmUMyGNA544nVIRmCOJbx5aG5Y6q16AjmihS7QJeRMod6KwSOkiuR9SJfYthjdd0JXLHjSzQNYqz7e3BwoKnGAEcL_FAx06SV3Uwjd-CSSogxkM4cnf3UEk4SECaWap3LRTIkvQCep3drhZUTvh1n6Dio92FQpOyAxvRBBVbNrMz1afsjWGKLbom0SCby6PrMpvfQSQacn3Xl3ti9VfvoYUPu_1xGqbs7cOL_QdoddUviEWQE7jVsrZnZX4m00.png)
+![imagen](http://www.plantuml.com/plantuml/png/fP8zJWD138Lxdy9AJKgQ2A4KD3Hqq3ip9hAOdOayFrAEmnauGYw69zaeHB0i4irgP_tylUVnhdCXBNK8KAG4nWUXhT90w1apkyhH2TtW2mNnvEJm4Nibre4rzJVn78kLF080kP8KQwwaac2JQlIaUtn-19TYqHGCgOqLTkOfJdOK2oxwDpiSSUtYip3WYCBblK5mXH9DR86_132Sl8eZ0yGUG1eLxfRMO6qdGslbs6Iw4KQTTKpc6HdpvYVMvJmzuMG5Vqs2g_6e-7JCqky-57JA_hYmm1dRuRrBClp3HTdL7QlvbFJ64VV8GGQ9XBbcgsub5qrvnc6yM-DvRfL3OyESY1QyBmhlbijHzgFg_1zqcSbxC2ygMmRWaFbwS5OrQ-wJKot9jhKnx2tyEUK4pVFyHj6ckHvc7dRMVfzolhVh43XwMDkZ3k4J.png)
 
 ```bash
 @startuml
@@ -14,10 +14,12 @@ participant "servicio de validación"
 usuario -> UI : insertar numero de verificacion
 activate UI
 UI -> server : enviar numero de verificacion
+
 server -> "servicio de validación": enviar numero de verificacion
 activate server
-"servicio de validación"  -> "servicio de validación" : validar Numero
 activate "servicio de validación"
+"servicio de validación"  -> "servicio de validación" : validar Numero
+
 
 alt credenciales válidas
 
@@ -40,7 +42,7 @@ deactivate  server
 usuario <-- UI : credenciales erróneas
 deactivate  UI  
 end
-@enduml
+@enduml 
 ```
 
 [back](../../../Diagramas.md)
