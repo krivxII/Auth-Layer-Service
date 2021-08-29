@@ -1,40 +1,53 @@
-![imagen](http://www.plantuml.com/plantuml/png/dPB1QiCm38RlVWhHSmjbx5J6w65ZxBBR7a1rH35pv2BBXRxzb3XUbuumw2KGwV-_NnBUPqNHqaUdGIF1Iy2ZO8_G4MJoXTW7NCChdqCQQbwe6skHidCElIQ1aWjAIEwG2dSe5_XyTpwnIee6aJE9ErbAyE64hB0QQi5Nu1bZwD1-UEMmQEBI7qm_8M7pR33OGM0pAKeTu3g2DKrIGqn6DcSJDKbjpcIvvJ94p7-MYZehJThi5b17OX84JL_4mqh1d6g6hkdDiBXqHOnp0yKh95EsDbo6eayYD1ZZpwaNSVzalTLPxSeaD-txcGMbG_WOcUisxQNkSY-rdgJ1A99NIHny0hnUeHtuQRDPHEr0A9yAPKLus6w75pFg9-jjUqAF4fFUjfsZc6d-F4WaCM5slnumF3fBcWSjcEQ9ophYpktjK_hu3G00.png)
+![imagen](http://www.plantuml.com/plantuml/png/jLIzQiCm4Dxr54Vc14Bf54h9K2XTEXJw01Vf2AAo54wI8O_J1-ZKhQjVh2TRYN4Wu1QI8SJdx-UxKqxRc91JRfnADZc29ujxnWR144JIcRosk8GtsjkOE9HoZXdP1gKKwXJu_BmBsHla8xo_A1sye9r8S4ki3k9XjJsWJx0eDNdejJ0dyl8AjUs-VQbOKme6pK8CgZIi7aKKDc2za2KmQ2RJHtCKImpROg9Yh9G01JuO2uLyQwyIAafOmwy9CnAqw2IA1uTngY2zkpGfGTjz5d2yfhKdJuoGmWTD6ntZp1zD5HQF-QGX1lcs-q8WDoQ957lqiLHrOAQYvSu7Ez_XhtcUXvduxgSX5aAT-82-fQyqPX1USx5Tdde-zYEvfMyTVlKZHpgnuAmEWEEyJwVxi5hDLzy0KpnaYWdXRhrMXlxnjvBTwLrhW4lD6h272FJojLBa8astWhWqI6Kjn3dutEn4-BwiwTJf6cliesBLHOnvt78ra3TgAr_bjfFFBm00.png)
 
 ```bash
 @startuml
-title Diagrama de secuencia, Envio de credenciales
+title Diagrama de secuencia, Registro de usuario
 
 
 actor usuario
 boundary UI
 control server
-participant "servicio de validacion"
-autonumber
-usuario -> UI : insertar crededenciales
+participant "servicio de autenticación de identidad"
+
+
+usuario -> UI : insertar credenciales
+activate UI
+
+
 UI -> server : enviar credenciales
+activate server 
+
+
 server -> server : se validan las credenciales
 
 
-alt credenciales validas
+alt credenciales válidas
 
 server -> server : se genera token de identidad
-server  -> "servicio de validacion" : se envia el token de sesion y el correo del usuario
-"servicio de validacion"  -> "servicio de validacion" : Genera numero de validacion
-"servicio de validacion"  -> "servicio de validacion" : Guarda Numero, correo y token
-"servicio de validacion"  -> "servicio de validacion" : envia correo electronico al usuario
+activate "servicio de autenticación de identidad"
+server  -> "servicio de autenticación de identidad" : se envía el token de sesión y el correo del usuario
+"servicio de autenticación de identidad"  -> "servicio de autenticación de identidad" : Genera número de validación
+"servicio de autenticación de identidad"  -> "servicio de autenticación de identidad" : Guarda Numero, correo y token
+"servicio de autenticación de identidad"  -> "servicio de autenticación de identidad" : envía correo electrónico al usuario
 
-server <-- "servicio de validacion": respuesta 200
+server <-- "servicio de autenticación de identidad": respuesta 200
+deactivate "servicio de autenticación de identidad"
 UI  <-- server : respuesta 200
 usuario <-- UI : respuesta 200
 
 
-else credenciales erroneas
+else credenciales erróneas
 
 autonumber 4
 
-UI <-- server : credenciales erroneas
+UI <-- server : credenciales erróneas
 
-usuario <-- UI : credenciales erroneas
+deactivate server
+
+usuario <-- UI : credenciales erróneas
+
+deactivate UI
 
 end
 @enduml
