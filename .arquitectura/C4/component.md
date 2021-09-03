@@ -1,4 +1,4 @@
-![image](http://www.plantuml.com/plantuml/png/jLLDJnin4BtdLxWvfH9abRIddX0V4ggWHQ5mHRFs45nvRTSVG5hrL_4J-6ETMPDDGXT4QNk8TltotXlFy-xiJamGKcxCu8ssqcI5uYeb7pzKLO2RyLodgrpdY44wcz2ciNHDvGrOrcp7f8okgxttsoSCdHqVLGt4X86WYprIWBOOnlu_-JVUMT8K_wIJGR6lOHwW0K65EW96MXeHDKdBNv2vc9OWzVsTPKGh1XIemU1qmRoBWziqmhWbXgSOhhLoOKZtIm-yJHYi4zyoYfoqqTz1S0ccIkr-hp5yEpZ149rjVJsIrn7KQDZqB6O898AL9X1_q6rbrsMh82n6SK7q9_jWhyy-QMV1Y7sCCcXUKUqVWq5t7FlrAA3It5bxVLgr9bfjeG5jI75C5z4c8v4TFZc5uwzHW5NYuDO7Z96MNBaxXf5yrn1JkX3G2Jxmu8p1DjU75L3Ct1UoGp7Or4-vzFsTogRDk7Yn0Tfh3G_hAD2W93-hfMEBdxsT12JTZ2FuuqQcipQzkOuflAwLwJbHhy5e1PB2Vfr7s4oZEyv3a2YSnz1wOnHeXG5HGqJcAKXjB9HBRp1o2Kt82xmMSqXu0uiNnpFvwtWc_o2UITFtiBG1NN50na032gA0pHUty1vvzKVzl5DXaH4bNNupDCMhdFzAv_LmQ_WnEbiTfkH9iiQSlOH9fD9mZh09XaVWUHz8IdgxdYzKg5FMJvVwhM90c-n52LZEcWCUB3LM1h7QfOGx5iz2P8RcGrLPef0aGYir68nB6bEee-vLN-S83m54pE8ofqntxODJPc9FMCNfl7EokS7GCxABgtID3ww6iFf4z7YsuV5ysaZWucXKC8-FHjJwX2B8hcsYbBbiT-5u_wV7Nqwep0vQnH-wNm00)
+![image](http://www.plantuml.com/plantuml/png/jLNTJZCt4BtFKxYv2X9abRHNlK9095H1YqAXbsZM7e8hhxqTsq1QzQbu15xicrb_-Gai28I-2xJhmpbdFCVUoM5CG2atRl2JzTfbW-ekfJR-MbK43-E5JNUvpX591v_Gfx4EJTKwyA8vYCauMrV7lnnS27HrVbOr41CIGpV7h03haSRj3_9lsk1PK_oJJGxLYOK5GGEA2wq967dfLBGiBV-2BCMi1csVdxmWrWXWm0m6bqlXtSmUqmZZlXfU8jrR4sZ8xoiFV4n8FgX_CggShBF_Wf8IGjKslAunt1jS8CNWEzyMsUiCQdHYUXKp48jWeo7c3zPREGhP6w3bA2wP_cOVulL7cspmuDG9HarMLbpxly5WVHmdzOZGMEciUxwjsX9jjj20TQmuvuVgaj4e3hy7W-E_em9lrEon9OoHbr9vVGmZ_NF3J1s8C2WvS0hE8OdyBwmLj7ORtTjLJgNeyvF9haktk8XqvkyjV5z7XGurEtYhGsIB_tjx88b_Bir_keNflCjjOMEYppOnlMRIFJXhG7F0drNJRWBhmpi5ZIgqI9qhHeLUEL0rH1IUWTH5mLdqXg5Nq8IzP0CBIFW0omz7Clb299ClHJ9f-Yx59XJde043KS7kfrbuBxpwuttVgR3OYDCjVtDqnQkSzaRNsk7-yBSOV7MQKikIBURy8qmcbOPpX5sGNe3NVI0h-Ijwlr2XJaK_NUdtYm5liXTbO3LDPZ8wQgmSOdN42QzPCkrG65QEqMJEKxC8lRRWCAveGYcN2UMJtk6e5WXKpEesfynlvSgKgVSwhE9qlNRokK7g6Sh5LVCbe503RNu4UZoxy6GExIHmSpOgM8ilHj7s96B8RssYbBdjTX5a_vVdVrvmcKFq9ZVk6m00)
 
 ```bash
 @startuml
@@ -16,23 +16,23 @@ System_Boundary(sy, "sistema de autenticación", "Optional Description"){
 ContainerDb(redis, "redis", "Optional Description")
 
 Container_Boundary(mail, "Mail Service", "Node.js and Express.js"){
-Component(c3m, "correo controller", "controlador de expres.js")
-Component(c3m2, "Módulo de correo", "envia correos electronicos")
+Component(c3m, "correo controller", "Web api controller")
+Component(c3m2, "Módulo de correo", "Envia correos electronicos")
 }
 
 Container_Boundary(re, "Redis Service", "Node.js and Express.js"){
-Component(c2R, "registro controller", "controlador de expres.js")
-Component(c2V, "validacion controller", "controlador de expres.js")
+Component(c2R, "registro controller", "Web api controller")
+Component(c2V, "validacion controller", "Web api controller")
 Component(c2r, "Módulo de redis", "Hace operaciones en la base de datos")
 
 }
 
 
 Container_Boundary(container1, "api gateway", "Node.js and Express.js"){
-Component(c1R, "registro controller", "controlador de expres.js")
-Component(c1V, "validacion controller", "controlador de expres.js")
-Component(c1m, "Módulo de correos", "hace llamadas al servicio de correo")
-Component(c1r, "Módulo de redis", "hace llamadas al servicio de redis")
+Component(c1R, "registro controller", "Web api controller")
+Component(c1V, "validacion controller", "Web api controller")
+Component(c1m, "Módulo de correos", "Hace llamadas al servicio de correo")
+Component(c1r, "Módulo de redis", "Hace llamadas al servicio de redis")
 
 
 }
@@ -54,7 +54,7 @@ Rel(pe, es, "introduce credenciales",)
 Rel(es, c1R, "envia credenciales para su futura validación","Json/Http")
 Rel(es, c1V, "envia numero de autenticación para comprobar identidad","Json/Http")
 Rel(c3m, c3m2, "usa",)
-Rel_L(c3m2, pe, "envia correo electronico con numero de identificacion","SMTP")
+Rel_L(c3m2, pe, "Envia correo electronico con numero de identificacion","SMTP")
 @enduml
 ```
 
