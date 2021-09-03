@@ -2,24 +2,10 @@
 
 
 
-![imagen](http://www.plantuml.com/plantuml/png/XPHHZjCm48RVSmehl7IbaWD4LRK8a029VQ1Sm6iFNRUE9uoTK8IuEwxRCB59QTxg-VxvPwpVVVH1KXWwM_LI7UKUHFt-r1DutnnyBLwzIv_uLOduAIkz5uH30Af-iq8XPUoyzeGQNd-3e5vk4V8m5gMgkZZLncaurLVt4OqMQTmtVRzwYDoLya2ZqKWJs2C5qOgFBi0UgD3k8WoKv9EUXY3z-TmeoCmKWQGlQTrCeD05Gck1VCOJxCtPvEsbVbPnSPJMQAuL8u0s_WFO7kXEHuL4W76zNI3ZzclXXWu8fz__6Zwb-gh0vhVSIMCNl3qu_JcMBjAvPJ73V97EQ6tXXoHOkXgIj5ClqCaLmVS1V5X7haVdOUtW5ChXxz5iUy43P-0PqVAL4m5-nIEurJFgdt7mJnxT0uFvLMKCU_WqoxHMkL4wowPELyoFIMoQHanH5R5_lTaC7hRREc8fw6qxfJksQfgj-8l72cStbqv84YWadvKN6oHq7lgsvQGNxMzZoOyVGYRxluepSbkLG5eOQ6wP67uv6LXo7FAytrmVkUmFAmEvmHsEjqlW5Ct2bu_Fq3LR6P8JyZ1crKTmUkZi7m00.png)
+![imagen](http://www.plantuml.com/plantuml/png/XP9DJiCm48NtFOMLLIfLFK1KLKLi00aMb0kuyQXOE9umjaiHukuuRYt_K6XsyNnltepzDiPoicvGirvnOrWZjO1Zmxvcp7y7b885ucOSs_diEr86w205KWH79CiwTgyjx84gxTR3G44UzUGiDzEvxA4mwmauFQEpbQ17RGcL0Z85Jx2NaydjgJwfKl70bHIfLeq0GfexK2FGbOuz4W7wzRQMfDulc7O34CR_tuPFeTxMcFUEvWENweAt0IqUVUaipIoh6V951Yc4WWzESEbgYDEsVuM1jmJl3enTU6v4RM2XuMZhuQ_HoVQ4svI17Q9ALpwD-u9leDiTYay_-8D1FQ_0U5KbapnCc2MkLMyKpegflJHy8SHT5vFhiULopLXChQ-aN7hRPhLo1jRhnailCa6UPxRhKb2h3dzYeKcMuqBslofxuchSh5yWirGNPCsb05ODCwi0ncUkk7GyGUTtAf0DQE46zGC0.png)
 
 ```bash
 @startuml
-package "Express.js" #DDDDDD {
-    class router
-}
-package "cors" #DDDDDD {
-
-}
-package "Node-fetch" #DDDDDD {
-
-}
-package "ajv" #DDDDDD {
-
-}
-
-
 class "index" {
     void startApp()
 }
@@ -63,29 +49,25 @@ class "schemas" {
 }
 
 
-Express.js <.. servidor  : "<<use>>"
+
 
 
 index::startApp   ..>  servidor::startServer : "<<use>>"
 
-servidor ..> cors : "<<use>>"
+
 servidor::startServer ..> rutasService::crearRouter : "<<use>>"
 
 rutasService::crearRouter ..> controllers : "<<use>>"
 rutasService::crearRouter ..> middlewares : "<<use>>"
-rutasService ..> router : "<<use>>"
+
 
 controllers ..> redisHelper : "<<use>>"
 controllers ..> mailHelper : "<<use>>"
 
-redisHelper ..> "Node-fetch": "<<use>>"
-
-mailHelper ..> "Node-fetch": "<<use>>"
 
 middlewares ..> validator : "<<use>>"
 
 validator ..> schemas : "<<use>>"
-validator ..> ajv : "<<use>>"
 @enduml
 ```
 
