@@ -1,10 +1,13 @@
-![imagen](http://www.plantuml.com/plantuml/png/dPB1JeGm48RlVOg6i_W0PjFiGQzxzK08cMqdR1KwPDfTDMRVtG8L8IuRtLuW-R-F-KbdwmDmEBQDS6HGUkIJDSHoiz6DHHTGgJ79Td326lhi6VVP1U2HNf7bWNpeq_wfrASGCfuHWAwn6hGbD-WKPOU6UC8Iccf4i39OQM96Ye9jeKQdb2poU2RXcvNH6zafMd0xCdZ_uk_aqtl7w7ryBw-CxP2zzG6Tjl2tuNFZvWhGsQg6W6_miJurGZ91_naqnGO2xC6Zp1YDzTbiqg9DodDDBJY3_0iyYxCGFpkJgtd_1ta8eHF5Od7AI4MiM7wuJAmGCt_ufqkhaE1hwFBwah2MZ_RGA95ZkpnVwxb5PuvjymK0)
+![imagen](http://www.plantuml.com/plantuml/png/dP7TJiCm38NlynHMhnaFWAPe5-EM5q1eCedf0crIEIu_Gdjtl2LqdSGcmAhKrkSxEOwyoe8iOzyP2T8Hh0EsZ3s29ttoq0LgHm9ZOj9E9duDFZ4ibqwLA6HjKPfrUY66RShIgBf_M_jfJ526dz0H32En96D0grXGJtVeGefxYqkAHlA93qQeTSnLSEDfun8p9JM47bkAriBzGklRCB7x6nHsaawuk-Jf-ZbVmUtxm9IpVZzSY1s8SyX2qGNyNVZSyUyHS0YR5eNUyEDyga9GeRy4JR97mKVC10sJ3xcP9HLePtR679U_i7MRDx0L6KpvqVPytAffpPg7kNvQPwKleYShg8PpUd4VhbF95KK_zjqN)
 
 ```js
 @startuml
+title Diagrama de despliegue 
+
 node servidor <<cliente>>
-node "Navegador Web" <<cliente>>
 node "Doker host" <<host>>{
+
+interface puerto
 
     node "aplicacion" <<contenedor>>{
 
@@ -25,18 +28,18 @@ node "Doker host" <<host>>{
 
 
         database "redis" <<imagen>>
-        node "redis-comander" <<imagen>>
+
     }
 }
 
-servidor <-> api_gateway: http
-[Navegador Web] <--> [redis-comander]: http
+servidor <-> puerto: http
+puerto<-> api_gateway: http
+
 
 
 api_gateway  --- servicio_de_correo : http
 api_gateway  --- servicio_de_persistencia : http
 servicio_de_persistencia  --- redis: http
-redis--- [redis-comander]: http
 @enduml
 ```
 
