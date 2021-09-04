@@ -1,30 +1,30 @@
-![imagen](http://www.plantuml.com/plantuml/png/fP8zJWD138Lxdy9AJKgQ2A4KD3Hqq3ip9hAOdOayFrAEmnauGYw69zaeHB0i4irgP_tylUVnhdCXBNK8KAG4nWUXhT90w1apkyhH2TtW2mNnvEJm4Nibre4rzJVn78kLF080kP8KQwwaac2JQlIaUtn-19TYqHGCgOqLTkOfJdOK2oxwDpiSSUtYip3WYCBblK5mXH9DR86_132Sl8eZ0yGUG1eLxfRMO6qdGslbs6Iw4KQTTKpc6HdpvYVMvJmzuMG5Vqs2g_6e-7JCqky-57JA_hYmm1dRuRrBClp3HTdL7QlvbFJ64VV8GGQ9XBbcgsub5qrvnc6yM-DvRfL3OyESY1QyBmhlbijHzgFg_1zqcSbxC2ygMmRWaFbwS5OrQ-wJKot9jhKnx2tyEUK4pVFyHj6ckHvc7dRMVfzolhVh43XwMDkZ3k4J.png)
+![imagen](http://www.plantuml.com/plantuml/png/jPB1IWCn48RlynH3p_ReHKGgUF7YHNo0QJAMmMooJ9A5FexFu2FqnPnqrvMYnLMmXqBOVxxv9fDDBgIbTW6AbC1u9xHJwWWzOsPNEJgX2xojXMCHHqvIRDzghgII081SIJgVjwb6Jxh7ftjmAHPDmJWwi49FQWJfAHPSFKekFBQXJ_RXBM9lD9TKEQsCFd5nVMD4l4A9HZDbZBLZJQtUsF8ygJKR6QXmwsy5LZPsjrAEWvmlX2bd5Sla9k3F9YDuFY-TVLaCbmlR5GmKn9lomr6vBIyKTCh-kER06OV3Quja-9V-ogxsh6PGqWj7t2C7wIGIvffHUMSSJNbvxtcz1lSyL0u36tF4W_ti3U3rUZt5lalDJwp5BDuilQZi6813vjFxOLMpu7P19fPizrl3NiBVbC-WFV_oiQ3DUJBc0l97zkly2sejXy3HmyR-QXVU0G00.png)
 
 ```bash
 @startuml
-title Diagrama de secuencia, Validación de numero de identidad 
+title Diagrama de secuencia, Autenticacion de usuario
 
 
 actor usuario
 boundary UI
 control server
-participant "servicio de validación"
+participant "Sistema de autenticación por correo"
 
 
 usuario -> UI : insertar numero de verificacion
 activate UI
 UI -> server : enviar numero de verificacion
 
-server -> "servicio de validación": enviar numero de verificacion
+server -> "Sistema de autenticación por correo": enviar numero de verificacion
 activate server
-activate "servicio de validación"
-"servicio de validación"  -> "servicio de validación" : validar Numero
+activate "Sistema de autenticación por correo"
+"Sistema de autenticación por correo"  -> "Sistema de autenticación por correo" : validar Numero
 
 
 alt credenciales válidas
 
-"servicio de validación"  -> "servicio de validación" : recuperar token y elimina sus registros
-"servicio de validación"  -> server  : devuelve el token
+"Sistema de autenticación por correo"  -> "Sistema de autenticación por correo" : recuperar token y elimina sus registros
+"Sistema de autenticación por correo"  -> server  : devuelve el token
 
 
 
@@ -35,14 +35,14 @@ else credenciales erróneas
 
 autonumber 5
 
-"servicio de validación"  -> server  : credenciales erróneas
-deactivate "servicio de validación" 
+"Sistema de autenticación por correo"  -> server  : credenciales erróneas
+deactivate "Sistema de autenticación por correo" 
 UI <-- server : credenciales erróneas
 deactivate  server 
 usuario <-- UI : credenciales erróneas
 deactivate  UI  
 end
-@enduml 
+@enduml
 ```
 
 [back](../../../Diagramas.md)
