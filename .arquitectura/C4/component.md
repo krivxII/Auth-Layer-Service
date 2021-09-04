@@ -1,34 +1,34 @@
-![image](http://www.plantuml.com/plantuml/png/jLNTJZCt4BtFKxYv2X9abRHNlK9095H1YqAXbsZM7e8hhxqTsq1QzQbu15xicrb_-Gai28I-2xJhmpbdFCVUoM5CG2atRl2JzTfbW-ekfJR-MbK43-E5JNUvpX591v_Gfx4EJTKwyA8vYCauMrV7lnnS27HrVbOr41CIGpV7h03haSRj3_9lsk1PK_oJJGxLYOK5GGEA2wq967dfLBGiBV-2BCMi1csVdxmWrWXWm0m6bqlXtSmUqmZZlXfU8jrR4sZ8xoiFV4n8FgX_CggShBF_Wf8IGjKslAunt1jS8CNWEzyMsUiCQdHYUXKp48jWeo7c3zPREGhP6w3bA2wP_cOVulL7cspmuDG9HarMLbpxly5WVHmdzOZGMEciUxwjsX9jjj20TQmuvuVgaj4e3hy7W-E_em9lrEon9OoHbr9vVGmZ_NF3J1s8C2WvS0hE8OdyBwmLj7ORtTjLJgNeyvF9haktk8XqvkyjV5z7XGurEtYhGsIB_tjx88b_Bir_keNflCjjOMEYppOnlMRIFJXhG7F0drNJRWBhmpi5ZIgqI9qhHeLUEL0rH1IUWTH5mLdqXg5Nq8IzP0CBIFW0omz7Clb299ClHJ9f-Yx59XJde043KS7kfrbuBxpwuttVgR3OYDCjVtDqnQkSzaRNsk7-yBSOV7MQKikIBURy8qmcbOPpX5sGNe3NVI0h-Ijwlr2XJaK_NUdtYm5liXTbO3LDPZ8wQgmSOdN42QzPCkrG65QEqMJEKxC8lRRWCAveGYcN2UMJtk6e5WXKpEesfynlvSgKgVSwhE9qlNRokK7g6Sh5LVCbe503RNu4UZoxy6GExIHmSpOgM8ilHj7s96B8RssYbBdjTX5a_vVdVrvmcKFq9ZVk6m00)
+![image](http://www.plantuml.com/plantuml/png/jLJ1JXin4BtdAzoSWWHP9Usf9mg9X5fe4IdqY6Rj8HXvxUtO1jAgKl-Xtz4Jdy2Vz4iwZicofAjIX7g8b7r-xtdcsPvj7u12h4plXRRIH8NYF8JQlouAWglXN8VpM4QF99qDQCDGkgge3TYasV916LqMkw-s3XDqVB1VLE034aEdkwm0RP66zN_ohsfdMPFzWmu6nKJ3dA02mHir1FJyQSHCipGlGKoRQGbItzvOKJiIqX6Xw_LcYyGwdLw70VfDqPyXNMhbgC___Pq3NWSawyJdY286RVGNnepmYIgr-tE7_aRl4Caxk_IjaRtseKIJJ8zz168Ht6k8-Rscb1qNhG9Q3FmYr_1e5ydsGnsqis341BqadRwuZA-zNdCkat90g7HgSW81Il2OXEzmyUlxZqim4OLQuHijtNr15MZJYYZLLA7rS85q-nFwxQLFMARTcpCPo9SLh-TwHJfzSiOW9H5p1TIwZMuyL8wPTN1xew99ORUwdjfB3NVVNg11oGvMI-VPubjd4uHhBTH8CeLifNwiX_4HhnFEcKvFxM9ymYIEMIkGsjcdggaLGKVHUo1HE4QNvkW5Mc50fCDCT0LX6GbdqXcAN44Zzdh3TSmXu1KialLxft1uuGLO9QRNDQ7t_BcMpEWPoOoUbSoewheSlWd56AX0WHVGUh4DRyrhBUNqNXvroYmsokdoxmXDzig7Vg-hTN-p_zOxM-o5KBEanJpw5oQJSiFHmqEGri2JBf2L_9h-lb6cZfD-lD9lPWCkiXDbO3LPfcdub5WOn6B74JMiD0GnCNGwHXKb2icYvGKsw5UqHCcN2VFJRd543GJ2Ht4MG-H_-ShaWTlkeUrqqZZPM25rpEhiAbrLaok1X5PfKO7gy5o6b-THAu7J_K76QbmRIUs9n91j5P6tELjMuLBziuEFXxpDDbeLA_CR)
 
 ```bash
 @startuml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
-title Diagrama de Componentes del sistema de autenticación de identidad
+title Diagrama de Componentes del Sistema de autenticación por correo
 
 System_Ext(es, "Servidor", "sistema externo que utiliza el servicio de autenticación")
 Person_Ext(pe, "Label", "Usuario a autenticar")
 
 
 
-System_Boundary(sy, "sistema de autenticación", "Optional Description"){
+System_Boundary(sy, "sistema de autenticación por correo", "Optional Description"){
 
-ContainerDb(redis, "redis", "Optional Description")
+ContainerDb(redis, "Database", "Key–value database")
 
-Container_Boundary(mail, "Mail Service", "Node.js and Express.js"){
+Container_Boundary(mail, "Servidor de mensajería", "Servidor Web"){
 Component(c3m, "correo controller", "Web api controller")
 Component(c3m2, "Módulo de correo", "Envia correos electronicos")
 }
 
-Container_Boundary(re, "Redis Service", "Node.js and Express.js"){
+Container_Boundary(re, "Servidor de percistencia", "Servidor Web"){
 Component(c2R, "registro controller", "Web api controller")
 Component(c2V, "validacion controller", "Web api controller")
-Component(c2r, "Módulo de redis", "Hace operaciones en la base de datos")
+Component(c2r, "Módulo de percistencia", "Hace operaciones en la base de datos")
 
 }
 
 
-Container_Boundary(container1, "api gateway", "Node.js and Express.js"){
+Container_Boundary(container1, "Api gateway", "Node.js and Express.js"){
 Component(c1R, "registro controller", "Web api controller")
 Component(c1V, "validacion controller", "Web api controller")
 Component(c1m, "Módulo de correos", "Hace llamadas al servicio de correo")

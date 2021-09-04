@@ -1,4 +1,4 @@
-![image](http://www.plantuml.com/plantuml/png/ZLDDJXjD4Dtx5FNDvhCbWnKfgwm0smA2mLPiXB8QbRihfb5FzQH_02UAb3la13b0Ljbbwvla9Ecs1my3Hc9MFQ_hLRrwR-R0URG-5BhrdsAXWoIuzhvqxtezYtVx2-MlmpmuiiAm9_RxmXIzKYCdpfxpKgjvh_zsRvAWo_DHhq3doKOexqS6AYQxNwR-_qFWI2w8FVXhWaz6QtEdU04w5W6oXCQriYwU3CJXe8r0hPUnnrRbym7nTdJuSNmvosVZIJuONrsqEpLsECsdPyDP_oI25NHrEZl9HyFZuSKWWYsll2OOA5nOB13IZFNE98sDRngcoddQt618PYY1Ggr-CvInGXXhoRHQ4xBES3wyzsqHd3S5sIvabowWLIQhZu1r5vl5-QtfClNFZqnWYNRP5czYzMk6PXtuseBuR1rfExAtAWhFBKdbKfyAI8tMMFOOlA9vUXyHTO6Si6fEi0JIgb0SPwCtBX4rmXmTfMF2Ob-FnLmHmuAOB8AETHmAifjw9PDWYH82Ax7114g4KDdHUI8RIxM8EWvB1SVewGwNksHE0dkJUX5xYn8hQLZghJcV0q61J3S86rN69qt25ANXI2FtR7Q1IkV9Dx9F_2g87TwGNVt2NNA6V1jlW7IrUdDpT6h1A0sWVbYx4LrJnM3UbkWnkHmx3wfZritEQFdt-uzRr87WeM93RdtRVZh3UrydJ_UUB9j7WjVUhNukKgO6reL2cRLNmIkjlgoNS2zzSGcfWqlF1z8xvZqAiOzQfwdlf-EBtibiDfb6Pc9jQXgMDmZebYowy0Al-NM_ZfgFcWdNFsSAKE7EyEgWri6VpoOPTAgzcneUCe7gDnfk_gBkKMHZrgr8zT0TCPsojqO6GI1YJsAXK9C30xpwyqnQNEg0M8P2_mC0)
+![image](http://www.plantuml.com/plantuml/png/ZLDDJXjB4Dxx5FLcysp9O3tfhTuAi2tWOR0L6w6iHkNkYcdKqptf7y298kKEEK4Ea5LssVecEKcgFOFj0ICngvxg-hxwwglg8n_GXLZerb_A21qbmMq8fV-lrtFuSBXGuJREeoSdh0bamg6mHQ_KQ1Bcm0UfrRpN__TWaaBNbwDUWJwGur3UPmGgG-wmJFn_GpGCBfW4mYt11wkrVL1c0PgJ08s4nhLodayMk3XeAr3h9NDiLBuimBUZu_VZwra-6q_omVZcgjtPnewd-VHYEEkVSR0EtPpFplBHy7HuDU1WAwYW2GOA5muBX5HZtJD9w_XFmrHnQzKDncI64YZKwgU1aZE4TOvigpKXvwt9Xu-XBQ8FjY3NXUpQHtJAPjiZu9R5PLo_DLqc_lp4HYFHBTlY7yv-Iz6i0vzRmD_6aROdTwzOUEv8Afzuwa0YAic9H6k4mcptxeRcwNz4r0NomgavmH98gq8P18d1-eJN27FqnCSgreM0nLoHWGLnSGJDUIPovrM-aactH0dHA57514g4MBlIUQOUIxLW7SUbWbCCz83BVJ8dqGIRk9ZTCLqj3KkzyUXZ92ZGq1r2fSg6f4dOehI6OUHVr2vGwJpPH-wPRGKPZtVaLZ_skZOqztm3fElMcvsZLmk3qWBgfxOR4sog6CpRx2mcbvbvK1-pRdP1ozzVlzsZZWHF6HMuzMMpGRnxsmMWnq3Es1t1Q-zMtnTffXRMYKBPjLSnAAq-hPlmhouUHxQ3IzyxqdlgxGonZrgdglzFnrUzizbiCcLaGbKv3SiR0FHB8xhm2gwvv6-3vgFcXBTlD0rGuTxXxGmg-NWvcsJGgVjkQdYQ2TJFQ5Yzeku9etbhQj2sw9undPlWh8o2G33d-f5gyc31h7wzaCPD7P6HiT1_0000)
 
 ```bash
 @startuml
@@ -16,7 +16,7 @@ Person_Ext(customer, "Usuario", "Usuario a autenticar")
 
 
 System_Boundary(c1, "Sistema de autenticación por correo") {
-    Container(servidor_redis, "Servidor de redis", "Servidor Web", "Lee, escribe y elimina datos de la base de datos, tambien genera los numeros de identidad unicos de cada usuario")
+    Container(servidor_redis, "Servidor de percistencia", "Servidor Web", "Lee, escribe y elimina datos de la base de datos, tambien genera los numeros de identidad unicos de cada usuario")
     Container(apig, "Api Gateway", "Servidor Web", "Punto de entrada de la aplicación que maneja a los otros componentes")
     Container(mail_server, "Servidor de mensajería", "Servidor Web", "Envía el numero de identidad asignado al usuario por correo")
     ContainerDb(database, "Database","Key–value database")
