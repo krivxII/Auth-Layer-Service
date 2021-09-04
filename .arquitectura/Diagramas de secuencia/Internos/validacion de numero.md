@@ -1,8 +1,8 @@
-![imagen](http://www.plantuml.com/plantuml/png/hP91QiCm54JtEiNWTNE1K4eMxGaAtVz8qo0gIqRwTjFRLp4Eg0cf2MJZXJIQD-F_TqKbwzW7eru3yUhbaAKNEABGZepMonFUukJJwSncklaii1XZn6hAw0hpv6rLyAZCCNNrogQeEGLqCdWSHFajFvqPAgqg1udQF7F4m6nzqTcxCqvKzbA8YlCBo4-YlB2x9cFpybU3BLZJ2-BOCyyiNoke__HMwilOUDyEr5hEZDlQLM1RP-u7yuzRPQsBdZURHRN51_C9bL0y6CufM5GW9LMvIwZ3WOJ36ALSZ5I2mecc0l0u0vJbeVdUYKmxLe600Pg-61yDsAUS9IAaifGvDo_6yPwVVxbDswgPHeQ9v-3DxQA_tabSFJCCXJ1tijjHWJcdI6aRhM_mUj1rHcja3ACpk_eP-_0B.png)
+![imagen](http://www.plantuml.com/plantuml/png/hPB1Rl8m48JlVefLpZylW7vLjEeRLEfziQV8gcD7k-kKldrD02c0K5g92vSPppT3TgF6OhLFpg8bq6ladN3F540ANv5zv7_qN0tPecSVIpveLIjBBCuvzbQ4EeMCiQc4lK5owPhaIpOfYJeU8ktOyCNVdHiQi3a7pZPx5a03n4Ur2TcvmCPRrbRfvKY98nkkicwnj7gwzD2QaCV8b6iFcK0n7CPydERCik-tkOniZFlUHU1iJXj7xdvK0oqv_gzMpTAOxv29G1e9wGo76XDhQTvGo9TCd7Oriv8NX2aZGPtZP1JOYX9XFwKRz47Dta02NvlAX4HMFf4V5xqj8fmf5JqDEAzL5_3h__dwQjRDCrQa4UU-S_Nelxqzkddca1Ja_iYUVnk2ICdW-PpbIrqkkioO1pc77Doc_TG-_G00.png)
 
 ```bash
 @startuml
-title Diagrama de secuencia, Envio de credenciales
+title Diagrama de secuencia, Autenticacion de usuario
 
 
 actor "servicio externo"
@@ -10,7 +10,7 @@ actor "servicio externo"
 
 control "api gateway"
 participant "servicio de percistencia"
-database redis
+database DB
 
 
 activate "api gateway"
@@ -19,16 +19,16 @@ activate "servicio de percistencia"
 "api gateway" -> "servicio de percistencia" : envia numero de identificacion
 
 
-activate redis 
-"servicio de percistencia" -> redis 
-"servicio de percistencia" <-- redis : Verifico si el numero esta asociado con algunas credenciales
+activate DB 
+"servicio de percistencia" -> DB 
+"servicio de percistencia" <-- DB : Verifica si el numero esta asociado con algunas credenciales
 
 alt datos  existentes
-"servicio de percistencia" -> redis 
-"servicio de percistencia" <-- redis : Se recupera el token
-"servicio de percistencia" -> redis 
-"servicio de percistencia" <-- redis : Se borran los datos asociados
-deactivate redis 
+"servicio de percistencia" -> DB 
+"servicio de percistencia" <-- DB : Se recupera el token
+"servicio de percistencia" -> DB 
+"servicio de percistencia" <-- DB : Se borran los datos asociados
+deactivate DB 
 "servicio de percistencia" --> "api gateway": devuelve token
 "api gateway" --> "servicio externo"  : devuelve token
 

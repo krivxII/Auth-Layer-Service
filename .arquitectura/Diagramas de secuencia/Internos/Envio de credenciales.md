@@ -1,4 +1,4 @@
-![imagen](http://www.plantuml.com/plantuml/png/lLL1Zjim3Bph5OJFpGU2ebYWVK4BzCwrPbErYcYGTBfvL4zxssi-LaLn0oI1KnSerbUDPeOZadumP_LncuCdpw1FYJVAMwO8ClGZIf_u7Nt69fchK0IDDh8c2I5mxwBK6NIN-YI4PuSMwUfHBwN2CtKy9DgmuoVlkp1KhOeSkFZvMkCSe5O5cjeTs1R5-3lqyAkY8Zi_ie4KCLcetwqJMdsuj41hGjdL--Jo0uNsr8igX93HknvUIkhbM5ZQiUFA_YLJfPwlOPbEo283TT_Ol09He3GMAeVNBLJey7e4TMStzoARFVgxpu-AmmkLiMb6K8eedfvIp_L2EQkVOgRxIWj0xrUh2RMchz0cf6I9aF-OW3dJQ1mb19GOtix3z4XxFdbWaugFGapYAjFBjDRFJf5TZF3SU1qM_gklBw17KUL2MMpIuk9fCug5APT5YclYlEKUXQTyprMUUZD4NEPxb_HweDOLinkHTsZfNFHGv5Z9bxJl6JCtxhV3DmzjevTQjTTsPkPmZghfJ7Gp4r8PYFE_iTwcI5L5OSFOsixOapsrxPeuH2n8vpgUAd2x3U-hp2oz1vHu_3zG-0q0.png)
+![imagen](http://www.plantuml.com/plantuml/png/jPJ1ZjGm38RlUGghP-O5HWYjW2S0YRityGw1DAuSPs0UYjFUzjeNmsbLQMQgRa62EKv-_v_pryv3KHIjVN8QDH5yZ7WIx142GI5VAVk8R-0JdM9HuVPtBHKbidCElR90LqZEqKS6-gaacJixyfnDdg338S89bNxWfNE3iKmvODQhClCSI8e19jehifvomMyauozJ1LHyn68zltVsMxS1XtUtV3W2vRCLW_9tod01po9a5OcyolYSe-TsgtYsYhlURvtCUli2VyPnYNc0xYiMHR1A4gWPylZIap2CBqtKNNMpdTVcqNwV7uJ6PyZLcDDv39GrFaMFLf0NUiiOTZ0xYhU7WqcC-8LayXSe4IWjR6efr8A1dQCStFz6Bv_aWZCQ2viuC22m2Y_VeKrvKWYeN6om9bEbulvHHvy97ba4CoJpdocODPug6sCEOfzr14mzUigufBbSRXv05-WgpLVjxbVcQ9fpfNIcbiZjb0GCY_FEW2wQxMtUNg-LT5gksAwwQcTZqpQj6cVBRju1Sm1CV-kwUdYC8bI6EerQGOtbQNey8xO4zzEvZyS0g_TkXxBnh3rG3hLFlm40.png)
 
 ```bash
 @startuml
@@ -11,7 +11,7 @@ actor "servicio externo"
 control "api gateway"
 participant "servicio de persistencia"
 participant "servicio de mensajería"
-database redis
+database DB
 
 
 
@@ -22,29 +22,29 @@ activate "api gateway"
 loop "hasta tener un número único"
 activate "servicio de persistencia"
 "servicio de persistencia" -> "servicio de persistencia" : Creó numero de identificacion
-activate redis 
-"servicio de persistencia" -> redis 
-"servicio de persistencia" <-- redis : Verificar si el numero esta usado
+activate DB 
+"servicio de persistencia" -> DB 
+"servicio de persistencia" <-- DB : Verificar si el numero esta usado
 
 end
 
-activate redis 
-"servicio de persistencia" -> redis 
-"servicio de persistencia" <-- redis : Verificar si correo ya esta asociado a otro número
+activate DB 
+"servicio de persistencia" -> DB 
+"servicio de persistencia" <-- DB : Verificar si correo ya esta asociado a otro número
 
 
 alt datos existentes
 
-"servicio de persistencia" -> redis 
-"servicio de persistencia" <-- redis : Se borran los datos antiguos
+"servicio de persistencia" -> DB 
+"servicio de persistencia" <-- DB : Se borran los datos antiguos
 
 
 end
 
 
 
-"servicio de persistencia" -> redis: almacena numero correo y token
-deactivate redis
+"servicio de persistencia" -> DB: almacena numero correo y token
+deactivate DB
 "servicio de persistencia" --> "api gateway": devuelve número de identidad
 deactivate "servicio de persistencia"
 activate "servicio de mensajería"
