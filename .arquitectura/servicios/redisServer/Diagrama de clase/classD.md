@@ -1,10 +1,10 @@
 # Diagrama de clase
 
-![imagen](http://www.plantuml.com/plantuml/png/VPFFRjim3CRlUGeY9nS8Yfs58kYG3VjpsA7P2oWMuGcJHO-Iimv3ttqEOskYrqMN8ERl-qYAr6FAblFOXqtsEI2yyxPZsrjm28TW4oPm6E28VFQE-FBv2PrFc-cqKpp1raU7prlulO7fdCax4C-tmz3SRLuMAiqE2pWGPp3mAMRia5VQIpfaaIzw7hDDKaQBAbdBQFc9nhmIj1GpKmZ8IV6CdRyaELpZeYh1imtUwLXLmgNnZnW6B5rWb3IMtmViCMPgujWZapHszJqHitLqiAcrpXw86QbfvSV0CREFdO3II2pW5Na31f8mEvYTZ_FVh_GTetRGgGHeiiPU_iwjmuXiCx6wdYdB2Vd34fih1UKm6_JUkO0_BUDhDyoMZ-qtx6t3-6F4b7SJDr1Ck8ludDUNVfkkqmfUrtqY2cLoKkwrzHEvNs3WSw9uzm_uHMvJCLME9BMKjbOToJTLzIIL8s_1cEK1JDZz_HvWMNvZglK60zk7Xp7XVh-TfAyo8gzNtvXgtxN3Vp4ngPw3ajrMLIDUbLlv2Laz3aMkkR9rnkXLqp8vLNRHbibhj7mMQ1wTGXunkh4FVm00.png)
+![imagen](http://www.plantuml.com/plantuml/png/VPFRZjCm48Rl-nIZNcMbQiMrjQeM5SJX0Y7A2qpZKR1mF67ib4LetvrqKWSxU_1D5Flx_pdOSnyJIXfxlqakUO9t3Zl17i4I73n6Yc39mv7ax5h7b-sl9AsBYKBhS3EjTi8YR5smzB25lnkOrfcT1RL-EmpDpUOnK_5YP5aoEB0aCF0f9Ef8LjfBL1ALPxsC2UES3LN1MY6KRpocbQ3ba8Iz9uaLBzIvIv33VAwgvV2CtjdYh78SYle_aXzeAOQ2HaDvxwcdaBW9Oq_2MjziVs8Hj7p0sAB50uiGDwr-31oJkD0fgFM41PoHDs0WAhE3g_Fn-lkTVrAe7UfG2ZIfnXx_Nrz7WGGJIzMbASg9v4C-ksOAfKCsw9srddwZq7ED5fHZ-uDwR8H-ZHJJRk863f5sWHxIklUlqsLOnSkyJym-cypzdKi_iVq31Zv73ZTFm2_QpOefOaJD9PUrhaZtggmdgIuT2MFo74pOxUqU8C-0CSKh1mFRkxinqdw_dQJFCYel9y2OujdN3YzYQb9CHILxNLLSyIhTma_9fpDIycjwUNl6h1vS5KPNaODgy_slq6LReUi5LiWz1Jls_Xy0.png)
 
 ```bash
 @startuml
-title Diagrama de Clases del Servidor de Redis
+title Diagrama de Clases del Servicio de Percistencia
 
 
 
@@ -25,7 +25,7 @@ class "controllers" {
     void validarControler()
 }
 
-class "redisHelper" {
+class "percistenciaHelper" {
     encontrarElemento(numero: Int)
     borradoCascadaCorreo(correo: String)
     creandoCascada(corre0 : string, numero:String, Token: String)
@@ -65,7 +65,7 @@ rutasService::crearRouter ..> controllers : "<<use>>"
 rutasService::crearRouter ..> middlewares : "<<use>>"
 
 
-controllers ..> redisHelper : "<<use>>"
+controllers ..> percistenciaHelper: "<<use>>"
 controllers ..> generator::numberGenerator : "<<use>>"
 
 

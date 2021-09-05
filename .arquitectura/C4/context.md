@@ -1,4 +1,4 @@
-![image](http://www.plantuml.com/plantuml/png/ZP3DRXD13CVl-nHcBoHIcrmuSIgq4QsKbgX9X3Yjd5btOp4x3fwPjELjU0PklUR5y8Q69X0aRbxl-FV_E8i9DUNM5wyuE9zhWcLAg_XsE5Iy7pISbdcH8wcJa2YaWPDskF8OkflJc6hFY-7vczD9jvfVZuSjnaHgg-gyktX8WrL7Vmqvs6bh24XBWZlnNkuvDE0v462euU0tQxH9mAJ1YqFl7utns-EV-6ByxlF7-QpwT3MxhCQZ3wERYrw_A18dJt31s2Ys27RuV2KsUvYoUVsrnzobOuUEDpy2h4JDZof9KKn8euIUop59Ite2vJncL9RoPGHy8MZPBwQF7RbdksKLjxEz_H-vZcc2BIS2ZE8OrPg3l9FfFiBcoNnq4O3h3bDZ3Pkdm4vC-bcx6ZsaNYHTSorQMMJI80RVhRP2c-yD1mI1xTQPmDTCa1Dx_eP07k8_BTUqCzLf5hVagnlYPhaGxS5URZY1NNCsbgEmPeIG_mvmsC7qUZOfeR_blaVtvKYKVUnLI2frTWHEoP3McwS8ShIhSeizGZomNTvIO-aLz_iNM9FodRK07lVCr-IXvTXAQOUNC_FUByuerBdrFm40)
+![image](http://www.plantuml.com/plantuml/png/ZP31RjD048RlVeh15nAfRIwSE1NQY5PgIzKaGfoioNhgZ5ZlXDdTjELjU0PklUR569k6910aRkFn_j___tCQ4shAhIzUSN0-rmIBb9RnxMYa-73IS5haUOwaJaAYa4wSjAEbnz1fZcEgFSz7Ps-ERxlLxFfgr69CfBQgpZh5OpfPTlJNa8D9MqD0MX3SY_VomA41pu40GmrxlrcZJG9c3LuSUlzaZDyP_yGNL-y-VvnDgq-NqulgQlnXV7C-61P5ukG9pXaRnHR1X2ygiTd3X2thhptchXqxTBp-4M0fQdbKIOhYbZHAgCQFQU1oJDAI7a4vYncLfToEW5kAbiDYyjJH1xPRLB6VxUt_M7PCCsqv4M0KnwYG0-IDJVSHri-MGpeErnscnXhMpu6TcFMBTvyvagwu5gsiDcaGWszMlT7wUyC1GQ3VEZFucWboOi_V4CX3_6VacZQXEi_YZdnrGzmivg83sEaDHx2vd8tbEAmO8UI_2-pVO78zlIrXs7FVe_joeCekzZ8abJex0gTaICVeAO8Sl5NPOmyGzsANTzHOUyNT-mkiIFcU7OB7BT7m7bgEhPGcl9XQzc5nIg7EhVy9)
 
 ```bash
 @startuml
@@ -10,7 +10,7 @@ LAYOUT_WITH_LEGEND()
 
 title Diagrama de Contexto del Sistema de autenticación por correo
 
-Person(customer, "Usuario", "Usuario a autenticar")
+Person_Ext(customer, "Usuario", "Usuario a autenticar")
 System(auth_system, "Sistema de autenticación por correo", "Permite asociar un usuario a un número de identidad único")
 
 System_Ext(servidor_externo, "servidor", "Página o servicio que utiliza el sistema de autenticación de usuario")
