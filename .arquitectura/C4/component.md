@@ -1,4 +1,4 @@
-![image](http://www.plantuml.com/plantuml/png/jLJ1JXiz4BxdAVpd52J8Albxweb28g4MMaGAFQ9PUmX6NdixjWDfLQdlqEVeYKVWJVea7SSa9CkgZTJs42d-_7sVPpvxPzy7e10hq_bFMscYGd4TGkrV5WN1RN-gmtKieqUIpWQqeIzTLTG6RDBi-Q2CBel35tkd2Je_EIugy069eSj3Le2sIFtw7_bNjREioVv11uDYf65AK87WWrO4zBmqOg9PchSWfiEq1AaVxgse7GdfYD1rEfDvObsExq8F_QxeJf1cMZdgyd__w81t0SawyJ6YY44R_Oan8toYIksUdz3TwPmYUMSNlZMorp6KQ9BfkOz0B88d3J6_iohbm4MhWEOzFqyrRD55idrN1-qi6352Bqcd5PVnkTDPtSkex14gdPeSGO0IF2RX6vp_-Ffj1eQRKqjyPqttL505sgn5b6ggq7guGNhu3jtrhGzOfjDNTzAJ_rUydqp96MXNiqX0hONCB8CSpAR5a5ad3_SgcfJwMljZEzFmkFO23Kfsi5ewpnPVMhiXRFHI8otIjbB_hfdXsVDc2AVQCx1D9yEBfhvvlLkvq6OSpGQEGA9mZB8bIxn0Amo8TCE9hY0iuk5yMWEIIsZ0Ng-uZYa4l8Lvidxh5FPll02hnFYk9lIUbusK1d-Oqk2lf3IesXwDNmLa35IWm0lO_AGph-6rHUBjXWqos-RS-NU69ZldP_4ahtLtj_lQEriSXL2pP8rvjWsJIRdzw64Jf0PuqGQoah-vNn-KgSEa7oxrkzc0Ysn56LWEed6QLIKM1h4uS4GhLfgPc1WwNQgA4eLaqI8xWtv9IvJypD3EU8fia4GD1C97SHL3v7ypC5hbTzEILhQwo5OQX8qLKijipwxILJMv4aXebJOLg1RFHNffR6r4S7dSorYDZScrFhWOicj5v6Ek5bMuLF_avFqf7xEFLiNAy4lw2G00)
+![image](http://www.plantuml.com/plantuml/png/jLJ1RWCr4BtdAqnEgTHcbS29KsaJgO8MgeIMOpHhJrDNNdiPssa3Gk8V-0vE_OJ-2L_2E6xItNGL8W67IDctxxsPUVREkGz08LQczuMsqaI5uZ64sdzT50JFmwKEZx6C7aaw6z26eNHLKHkmINFcWpAwB2w_EhjDqDtDTL613qWCBIvP0TeY3Ul_oR-gdMLDzWyw61GJ3Kk22WGNsX7GywCHSytI_0fYAgObIFtsQaNjI4X7XAxNcwyJQp5z2GFqfw8_HrffvQZF__sx0xu49El4pn553DheNnWpmYUgrEvpXVv9xnR9ExlnhP6zhg54aqplV0HY4NneYFczNIiNBbe5j1xuTUhXY2cIxGzrqCw24HFqadHwuZP-xVLsvp8f1uHAfo4d4A04Zqdu7Qx_-lsF5HWUJctnauRkew4Aj6b4b7ggq7fuGdhx4_hDLpzXcQhlpcGWlwpuVJ8bPw1RpI81jHOoimnoC6sBCRDktbvLDAwfrnlvrAuql4VY1HgKx6ArT9vjVkkSY71ldXffaxYL-fy66iy-3qIuP3MvOwOPtxVr7TVe61TgHx8_m1L858vHjcI95sY50P5EET4LX4qyd4zdG78BZTZh6-vZ2G6VOPsiltSAXqzUW5LY-b8JUi-FUocD_cLAe_yafL5ruEBaZ8o12XJmEEqlkq5jMnuC_h1fYyosENx-pT1avtmxFkIrxf_sl_NE5bSXr2nfC6V7C9cKKuWUsY3jWVTT82lvypjSA5F7IJ_Uwa-p0JVPYJAmtKdJjBPAB0nYSU68jgp5J2yVynB5nDFfX5NaS2LBDmaQz5lBHCbt3ksArqgB96eW43wAXnWY_rk1qIfVeexCijLzjj8WRAoGEfPzTfLyCyYLG4Ahz5A1wl3SP9ZsM2k8nVKWOpNkhR7c5cF8Dfh8PHusNRZK__pcnrikSuvMnShy3G00)
 
 ```bash
 @startuml
@@ -17,7 +17,7 @@ ContainerDb(redis, "Database", "Key–value database")
 
 Container_Boundary(mail, "Servidor de mensajería", "Servidor Web"){
 Component(c3m, "Controlador de mensajería", "Web api controller")
-Component(c3m2, "Módulo de correo", "Envia correos electronicos")
+Component(c3m2, "Módulo de mensajeria", "Envia correos electronicos")
 }
 
 Container_Boundary(re, "Servidor de persistencia", "Servidor Web"){
@@ -31,7 +31,7 @@ Component(c2r, "Módulo de persistencia", "Hace operaciones en la base de datos"
 Container_Boundary(container1, "Api gateway", "Node.js and Express.js"){
 Component(c1R, "Controlador de registro", "Web api controller")
 Component(c1V, "Controlador de autenticación", "Web api controller")
-Component(c1m, "Módulo de correos", "Hace llamadas al servicio de correo")
+Component(c1m, "Módulo de mensajeria", "Hace llamadas al servicio de mensajeria")
 Component(c1r, "Módulo de persistencia", "Hace llamadas al servicio de persistencia")
 
 
