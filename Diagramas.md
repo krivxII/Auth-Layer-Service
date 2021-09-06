@@ -34,6 +34,10 @@
 + [Ruta Registrar](<./.arquitectura/servicios/redisServer/Diagramas de actividad/RutaRegistrar.md>)
 + [Ruta validar](<./.arquitectura/servicios/redisServer/Diagramas de actividad/RutaValidar.md>)
 
+### mail Server
+
++ [mandar correo](<./.arquitectura/servicios/mailServer/Diagramas de actividad/RutaCorreo.md>)
+
 
 ## Diagramas de clase
 
