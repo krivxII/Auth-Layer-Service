@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+
+  mailserver:
+    container_name: mailServer
+    build:
+      context: ./mailServer
+      # `args` is used to make environment variables visible during the build. See https://docs.docker.com/compose/compose-file/compose-file-v3/#environment.
+      args:
+        - CORREO_ELECTRONICO=herman.anez@alumnos.uneatlantico.es
+        - CONTRASENA=T3tmVUOk
+        - PORT=80
+    ports:
+    - "8081:80"
+        
+  redis:
+    container_name: redis
+    hostname: redis
+    build: ./redis
+    
+  redisserver:
+    container_name: redis-server
+    build:
+      context: ./redisServer
+      # `args` is used to make environment variables visible during the build. See https://docs.docker.com/compose/compose-file/compose-file-v3/#environment.
+      args:
+        - REDIS_SERVER=redis
+        - PORT=80
+    ports:
+    - "8082:80"
+    
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander@sha256:4d203e794be65c82a1e4d2785b7c717ae9b66485658e307a413c077b44887cd6
+    restart: always
+    environment:
+    - REDIS_HOSTS=local:redis:6379
+#      - HTTP_USER=root
+#      - HTTP_PASSWORD=qwerty
+    ports:
+    - "8083:8081"
+    depends_on:
+    - redis
