@@ -11,7 +11,7 @@ const router = {
         erouter.post("/autenticar",
             controllers.autenticarControler)
 
-        erouter.post("/validar",
+        erouter.get("/validar",
             controllers.validarControler)
             
         return erouter
