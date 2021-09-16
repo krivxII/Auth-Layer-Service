@@ -30,6 +30,15 @@ const controllers = {
 
         if (response===400) {res.sendStatus(400)} else {res.json(response)}
         
+    },
+
+    async destruirControler(req, res){
+        console.log("destruirControler")
+        console.log(req.headers.authorization)
+        const response =await helper.destruir(req.headers.authorization)
+
+        if (response===400) {res.sendStatus(400)} else {res.json(response)}
+        
     }
 
 

@@ -87,7 +87,7 @@ const helper = {
     
     if ((600 > response.status) && (response.status > 499)) {//500
 
-      this.validar(token)
+     return await this.validar(token)
     }
     else if ((500 > response.status) && (response.status > 399)) {//400
 
@@ -115,6 +115,7 @@ const helper = {
     console.log("+"+token)
     console.log(typeof token)
 
+    console.log("destruir")
 
 
     let headers= {
@@ -125,14 +126,13 @@ const helper = {
       headers: headers,
       redirect: 'follow'
    };
-    const response = await fetch(ruta+"sessions/"+token, requestOptions)
-      .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
-
+    const response = await fetch(ruta+"sessions/"+token, requestOptions);
+      console.log("response")
     console.log(response)
-    
+    console.log("response")
     if ((600 > response.status) && (response.status > 499)) {//500
-
-      this.validar(token)
+      console.log("destruir reset")
+      return await this.destruir(token)
     }
     else if ((500 > response.status) && (response.status > 399)) {//400
 
@@ -147,7 +147,7 @@ const helper = {
     else if ((300 > response.status) && (response.status > 199)) {//200
 
       console.log("2222222222222222222222222")
-      console.log(response.body.username)
+  
       return 1
 
 

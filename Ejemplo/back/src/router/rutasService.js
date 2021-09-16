@@ -13,6 +13,9 @@ const router = {
 
         erouter.get("/validar",
             controllers.validarControler)
+
+        erouter.delete("/destruir",
+            controllers.destruirControler)
             
         return erouter
     }

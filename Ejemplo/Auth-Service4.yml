@@ -1,0 +1,53 @@
+version: "3"
+services:
+  apigateway:
+    container_name: apigateway
+    build:
+      context: ./apiGateway # ubicacion del codigo a ejecutar en el contenedor
+      args: # variables de entorno del contenedor
+        - URL_CORREO=http://mailServer:80/
+        - URL_REDIS=http://redis-server/
+        - PORT=80
+    ports: # Puerto a exponer de la aplicacion
+    - "80:80"
+
+  mailserver:
+    container_name: mailServer
+    build:
+      context: ./mailServer # ubicacion del codigo a ejecutar en el contenedor
+      args: # variables de entorno del contenedor
+        - CORREO_ELECTRONICO=herman.anez@alumnos.uneatlantico.es # Correo a utilizar para mandar los mensajes
+        - CONTRASENA=****** # Contraseña del correo
+        - PORT=80
+        
+  redis:
+    container_name: redis
+    hostname: redis
+    build: ./redis
+    
+  redisserver:
+    container_name: redis-server
+    build:
+      context: ./redisServer # ubicacion del codigo a ejecutar en el contenedor
+      args: # variables de entorno del contenedor
+        - REDIS_SERVER=redis
+        - PORT=80
+
+  back1:
+    container_name: back1
+    build:
+      context: ./back # ubicacion del codigo a ejecutar en el contenedor
+      args: # variables de entorno del contenedor
+        - PORT=80
+    ports: # Puerto a exponer de la aplicacion
+    - "81:80"  
+
+  back2:
+    container_name: back2
+    build:
+      context: ./back2 # ubicacion del codigo a ejecutar en el contenedor
+      args: # variables de entorno del contenedor
+        - PORT=80
+    ports: # Puerto a exponer de la aplicacion
+    - "81:80" 
+    - URL_API=http://apigateway:80/ 
