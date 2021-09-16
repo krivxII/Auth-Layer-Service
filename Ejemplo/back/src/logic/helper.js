@@ -55,7 +55,11 @@ const helper = {
     else if ((300 > response.status) && (response.status > 199)) {//300
 
       console.log("se registro al usuario")
-      return response.body
+      console.log(response.body.sessionToken)
+      let datos = await this.validar(response.body.sessionToken)
+      let final = {...response.body,...datos};
+      console.log(final);
+      return final
 
     }
 
@@ -83,7 +87,7 @@ const helper = {
     
     if ((600 > response.status) && (response.status > 499)) {//500
 
-      this.validar({token})
+      this.validar(token)
     }
     else if ((500 > response.status) && (response.status > 399)) {//400
 
@@ -99,14 +103,57 @@ const helper = {
 
       console.log("el token  fue validado en vaidarr")
       console.log(response.body.username)
-      return response.body
+      return {"username":response.body.username,"email":response.body.firstName}
+
+
+    }
+
+  },
+
+  async destruir(token) {
+
+    console.log("+"+token)
+    console.log(typeof token)
+
+
+
+    let headers= {
+      "authorization": token
+    }
+    var requestOptions = {
+      method: 'DELETE',
+      headers: headers,
+      redirect: 'follow'
+   };
+    const response = await fetch(ruta+"sessions/"+token, requestOptions)
+      .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
+
+    console.log(response)
+    
+    if ((600 > response.status) && (response.status > 499)) {//500
+
+      this.validar(token)
+    }
+    else if ((500 > response.status) && (response.status > 399)) {//400
+
+
+
+      console.log("11111111111111111111")
+
+      return 0
+
+
+    }
+    else if ((300 > response.status) && (response.status > 199)) {//200
+
+      console.log("2222222222222222222222222")
+      console.log(response.body.username)
+      return 1
 
 
     }
 
   }
-
-
 }
 
 export default helper
