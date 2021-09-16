@@ -17,7 +17,7 @@ services:
       context: ./mailServer # ubicacion del codigo a ejecutar en el contenedor
       args: # variables de entorno del contenedor
         - CORREO_ELECTRONICO=herman.anez@alumnos.uneatlantico.es # Correo a utilizar para mandar los mensajes
-        - CONTRASENA=****** # Contraseña del correo
+        - CONTRASENA=T3tmVUOk # Contraseña del correo
         - PORT=80
         
   redis:
@@ -48,6 +48,6 @@ services:
       context: ./back2 # ubicacion del codigo a ejecutar en el contenedor
       args: # variables de entorno del contenedor
         - PORT=80
+        - URL_API=http://apigateway:80/ 
     ports: # Puerto a exponer de la aplicacion
-    - "81:80" 
-    - URL_API=http://apigateway:80/ 
+    - "82:80" 
