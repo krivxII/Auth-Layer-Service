@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="a.css">
+</head>
+<body>
+    <form name="myForm">
+
+  
+  
+      <label for="num"><b>Number</b></label>
+      <input type="text" placeholder="Enter Username" name="num" required>
+  
+    
+  
+      <button onClick="a(event)" type="submit">Login</button>
+ 
+  
+
+  </form>
+<pre id="1">    </pre>  
+  <h1 id="2"></h1>
+  <h1 id="3"></h1>
+  <script>
+      async  function a(event) {
+            event.preventDefault();
+           let numero = document.forms["myForm"]["num"].value
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({ "numero": numero });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+         let response= await  fetch("http://localhost:82/autenticar2", requestOptions)
+                                .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, body: data })));
+         console.log(response.body)
+
+            document.getElementById("1").innerHTML= JSON.stringify(response.body, " ", 2)
+            
+
+        }
+    </script>
+</body>
+</html>

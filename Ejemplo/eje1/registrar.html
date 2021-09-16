@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="a.css">
+</head>
+
+<body>
+    <form name="myForm">
+
+
+
+        <label for="uname"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <button onClick="a(event)" type="submit">Login</button>
+
+    </form>
+   
+    <script>
+      async  function a(event) {
+            event.preventDefault();
+           let correo = document.forms["myForm"]["email"].value
+           let usuario = document.forms["myForm"]["uname"].value
+           let contrasena = document.forms["myForm"]["psw"].value
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({ "correo": correo, "usuario": usuario, "contrasena": contrasena });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+         let response= await  fetch("http://localhost:81/autenticar", requestOptions)
+         if (response.status===200) window.location.href = "iniciar.html"
+
+
+
+        }
+    </script>
+</body>
+
+</html>
