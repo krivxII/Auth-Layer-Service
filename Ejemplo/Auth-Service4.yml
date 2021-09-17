@@ -51,3 +51,16 @@ services:
         - URL_API=http://apigateway:80/ 
     ports: # Puerto a exponer de la aplicacion
     - "82:80" 
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander@sha256:4d203e794be65c82a1e4d2785b7c717ae9b66485658e307a413c077b44887cd6
+    restart: always
+    environment:
+    - REDIS_HOSTS=local:redis:6379
+#      - HTTP_USER=root
+#      - HTTP_PASSWORD=qwerty
+    ports:
+    - "8082:8081"
+    depends_on:
+    - redis
